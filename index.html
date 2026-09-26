@@ -5,379 +5,370 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Antibody — Autonomous Immune System for Repositories | IBM Bob 2.0</title>
   <meta name="description" content="Your team already paid for every bug. Antibody makes sure you never pay twice. An autonomous repository immune system built on IBM Bob 2.0.">
+  <meta name="theme-color" content="#f2f4f8">
+  <script>
+    (function () {
+      document.documentElement.classList.add("js");
+      try {
+        var t = localStorage.getItem("antibody_theme");
+        if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..900&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧬</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><circle cx=%2216%22 cy=%2216%22 r=%2213%22 fill=%22none%22 stroke=%22%23d23a57%22 stroke-width=%223%22/><circle cx=%2216%22 cy=%2216%22 r=%225%22 fill=%22%237b2b93%22/></svg>">
 </head>
 <body>
+  <a class="skip-link" href="#lab">Skip to the live simulator</a>
 
-  <!-- Top Navigation Bar -->
-  <header class="header-nav">
-    <div class="container nav-wrapper">
-      <div class="brand-group">
-        <a href="#" class="brand-logo">
-          <span class="brand-dna">🧬</span>
-          <span>ANTIBODY</span>
-        </a>
-        <div class="hackathon-pill">
-          <span class="hackathon-dot"></span>
-          <span>IBM Bob 2.0</span>
-        </div>
-      </div>
+  <!-- SVG sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-out" viewBox="0 0 16 16"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 16 16"><rect x="5.5" y="5.5" width="7" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M3.5 10.5v-6a1 1 0 0 1 1-1h6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 16 16"><circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 16 16"><path d="M13.2 10.1A5.6 5.6 0 0 1 5.9 2.8a5.6 5.6 0 1 0 7.3 7.3Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-play" viewBox="0 0 16 16"><path d="M5 3.5v9l7.5-4.5z" fill="currentColor"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 16 16"><path d="M4.5 3.5h2.5v9H4.5zM9 3.5h2.5v9H9z" fill="currentColor"/></symbol>
+  </svg>
 
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#lab" data-i18n="nav_lab">Live Simulator</a></li>
-          <li><a href="#repo-map" data-i18n="nav_repomap">Immune Map</a></li>
-          <li><a href="#microscope" data-i18n="nav_microscope">AST Microscope</a></li>
-          <li><a href="#phases" data-i18n="nav_architecture">4-Phase Loop</a></li>
-          <li><a href="#proof" data-i18n="nav_proof">Proof vs Opinion</a></li>
-          <li><a href="#roi-calc" data-i18n="nav_roi">ROI Calculator</a></li>
-          <li><a href="#sandbox" data-i18n="nav_sandbox">Live Terminal</a></li>
-        </ul>
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <div class="wrap nav-row">
+      <a href="#" class="wordmark" aria-label="Antibody home">
+        <svg class="wordmark-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="16" cy="16" r="5"/></svg>
+        <span>antibody</span>
+      </a>
+      <span class="nav-event">IBM Bob 2.0</span>
+
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#lab" data-i18n="nav_lab">Live Simulator</a>
+        <a href="#repo-map" data-i18n="nav_repomap">Immune Map</a>
+        <a href="#microscope" data-i18n="nav_microscope">AST Microscope</a>
+        <a href="#phases" data-i18n="nav_architecture">4-Phase Loop</a>
+        <a href="#proof" data-i18n="nav_proof">Proof vs Opinion</a>
+        <a href="#roi-calc" data-i18n="nav_roi">ROI Calculator</a>
+        <a href="#sandbox" data-i18n="nav_sandbox">Live Terminal</a>
       </nav>
 
       <div class="nav-controls">
-        <button id="lang-toggle-btn" class="btn-control" aria-label="Toggle language">
-          <span>🌐</span>
-          <span class="lang-text font-mono">EN</span>
+        <button id="lang-toggle-btn" class="ctl" aria-label="Toggle language">
+          <span class="lang-text">EN</span>
         </button>
-        <button id="theme-toggle-btn" class="btn-control" aria-label="Switch theme">
-          <span class="theme-icon">☀️</span>
+        <button id="theme-toggle-btn" class="ctl" aria-label="Switch theme">
+          <span class="theme-icon" aria-hidden="true">
+            <svg class="ico ico-sun"><use href="#i-sun"/></svg>
+            <svg class="ico ico-moon"><use href="#i-moon"/></svg>
+          </span>
         </button>
-        <a href="https://github.com/Rom4n10/ibmHackathon" target="_blank" class="btn-primary" style="padding: 8px 14px; font-size: 13px;">
-          <span>GitHub</span>
-          <span>↗</span>
+        <a href="https://github.com/Rom4n10/ibmHackathon" target="_blank" rel="noopener" class="btn btn-ink btn-sm">
+          <span>GitHub</span><svg class="ico"><use href="#i-out"/></svg>
         </a>
+        <details class="nav-menu">
+          <summary class="ctl" aria-label="Open section menu"><span class="burger" aria-hidden="true"></span></summary>
+          <div class="nav-menu-panel">
+            <a href="#lab" data-i18n="nav_lab">Live Simulator</a>
+            <a href="#repo-map" data-i18n="nav_repomap">Immune Map</a>
+            <a href="#microscope" data-i18n="nav_microscope">AST Microscope</a>
+            <a href="#phases" data-i18n="nav_architecture">4-Phase Loop</a>
+            <a href="#proof" data-i18n="nav_proof">Proof vs Opinion</a>
+            <a href="#roi-calc" data-i18n="nav_roi">ROI Calculator</a>
+            <a href="#sandbox" data-i18n="nav_sandbox">Live Terminal</a>
+          </div>
+        </details>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <main>
+  <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="hero-grid-pattern"></div>
-    <div class="container hero-content">
-      <div class="hero-meta-badge">
-        <span class="meta-status-pulse"></span>
-        <span data-i18n="badge_hackathon">IBM Bob 2.0 Hackathon · September 2026</span>
-      </div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="dateline"><span class="dateline-dot" aria-hidden="true"></span><span data-i18n="badge_hackathon">IBM Bob 2.0 Hackathon · September 2026</span></p>
 
-      <h1 class="hero-title" data-i18n="hero_headline">
-        Your team already paid for every bug.<br>
-        Antibody makes sure you <span class="highlight">never pay twice</span>.
-      </h1>
+        <h1 class="hero-title">
+          <span class="h1-a" data-i18n="hero_headline_a">Your team already paid for every bug.</span>
+          <span class="h1-b"><span data-i18n="hero_headline_b_pre">Antibody makes sure you</span> <em data-i18n="hero_headline_b_em">never pay twice</em>.</span>
+        </h1>
 
-      <p class="hero-description" data-i18n="hero_sub">
-        When a developer fixes a bug, they fix only one copy. Antibody uses IBM Bob 2.0 to hunt the mistake's semantic twins across your repository, proves each one with a failing pytest, and lets autonomous red-team subagents attack custom Semgrep defenses until repository immunity hits 100%.
-      </p>
+        <p class="hero-sub" data-i18n="hero_sub">
+          When a developer fixes a bug, they fix only one copy. Antibody uses IBM Bob 2.0 to hunt the mistake's semantic twins across your repository, proves each one with a failing pytest, and lets autonomous red-team subagents attack custom Semgrep defenses until repository immunity hits 100%.
+        </p>
 
-      <div class="hero-actions">
-        <a href="#lab" class="btn-primary" data-i18n="btn_try_sim">
-          <span>⚡</span>
-          <span>Run Live Immune Simulation</span>
-        </a>
-        <a href="#phases" class="btn-secondary" data-i18n="btn_view_docs">
-          <span>📖</span>
-          <span>View Architecture & Contracts</span>
-        </a>
-      </div>
-
-      <!-- Trust & Verification Strip -->
-      <div class="trust-strip">
-        <div class="trust-item">
-          <div class="trust-icon">🔬</div>
-          <div class="trust-text">
-            <b data-i18n="trust_proof">100% Deterministic Proofs</b>
-            <span data-i18n="trust_proof_sub">pytest exit code 1 → 0</span>
-          </div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">🛡️</div>
-          <div class="trust-text">
-            <b data-i18n="trust_zero_hallucination">Zero Code Hallucinations</b>
-            <span data-i18n="trust_zero_hallucination_sub">recorded_by: antibody-cli</span>
-          </div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">📂</div>
-          <div class="trust-text">
-            <b data-i18n="trust_gitops">Pure GitOps Architecture</b>
-            <span data-i18n="trust_gitops_sub">0 cloud databases or servers</span>
-          </div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-icon">⚡</div>
-          <div class="trust-text">
-            <b data-i18n="trust_isolation">100% Worktree Isolation</b>
-            <span data-i18n="trust_isolation_sub">Zero working tree pollution</span>
-          </div>
+        <div class="hero-actions">
+          <a href="#lab" class="btn btn-accent magnetic">
+            <span data-i18n="btn_try_sim">Run Live Immune Simulation</span>
+            <svg class="ico"><use href="#i-arrow"/></svg>
+          </a>
+          <a href="#phases" class="btn btn-ghost">
+            <span data-i18n="btn_view_docs">View Architecture & Contracts</span>
+          </a>
         </div>
       </div>
+
+      <!-- Signature: microscope lens over the repository -->
+      <figure class="slide" id="hero-slide">
+        <div class="slide-frame">
+          <div class="slide-layer slide-base">
+<pre class="slide-code" id="slide-code"><span class="f" data-tag="origin · fixed #412" data-state="origin">billing/invoices.py</span>
+<span class="l"><i>86</i>def process_record(invoice):</span>
+<span class="l"><i>87</i>    # fix a1b2c3d</span>
+<span class="l t" data-state="origin"><i>88</i>    if invoice.expires_at &lt; datetime.now(timezone.utc):</span>
+<span class="l"><i>89</i>        invoice.mark_expired()</span>
+
+<span class="f" data-tag="c01 · twin" data-state="twin">billing/subscriptions.py</span>
+<span class="l"><i>141</i>def check_renewal(sub):</span>
+<span class="l t" data-state="twin" data-twin="c01 · subscriptions.py:142"><i>142</i>    if sub.renews_at &lt; datetime.now():</span>
+<span class="l"><i>143</i>        sub.trigger_billing_cycle()</span>
+
+<span class="f" data-tag="c02 · twin" data-state="twin">billing/reminders.py</span>
+<span class="l t" data-state="twin" data-twin="c02 · reminders.py:57"><i>57</i>    grace = (r.due_at - datetime.utcnow()).days</span>
+<span class="l"><i>58</i>    return grace &gt; GRACE_DAYS</span>
+
+<span class="f" data-tag="c03 · twin" data-state="twin">billing/api/webhooks.py</span>
+<span class="l t" data-state="twin" data-twin="c03 · webhooks.py:203"><i>203</i>    if event.received_at &lt; datetime.now() - skew:</span>
+<span class="l"><i>204</i>        raise StaleSignature()</span>
+
+<span class="f" data-tag="c04 · suspected" data-state="suspected">billing/reports/monthly.py</span>
+<span class="l t" data-state="suspected" data-twin="c04 · monthly.py:31 — suspected"><i>31</i>    cutoff = datetime.now().replace(day=1)</span>
+
+<span class="f" data-tag="c05 · rejected" data-state="rejected">billing/logging_utils.py</span>
+<span class="l t" data-state="rejected" data-twin="c05 · logging_utils.py:12 — rejected"><i>12</i>    stamp = datetime.now().isoformat()</span></pre>
+          </div>
+          <div class="slide-layer slide-stain" aria-hidden="true"></div>
+          <div class="lens" aria-hidden="true"><span class="lens-mag">×400</span></div>
+        </div>
+        <figcaption class="slide-cap">
+          <span class="slide-cap-hint" data-i18n="hero_lens_hint">Move the lens over billing/ — grep sees identical lines, Bob sees twins.</span>
+          <span class="slide-cap-readout" id="lens-readout" aria-live="polite">—</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- Trust strip as a spec table -->
+    <div class="wrap">
+      <dl class="spec-strip">
+        <div class="spec">
+          <dt data-i18n="trust_proof">100% Deterministic Proofs</dt>
+          <dd data-i18n="trust_proof_sub">pytest exit code 1 → 0</dd>
+        </div>
+        <div class="spec">
+          <dt data-i18n="trust_zero_hallucination">Zero Code Hallucinations</dt>
+          <dd data-i18n="trust_zero_hallucination_sub">recorded_by: antibody-cli</dd>
+        </div>
+        <div class="spec">
+          <dt data-i18n="trust_gitops">Pure GitOps Architecture</dt>
+          <dd data-i18n="trust_gitops_sub">0 cloud databases or servers</dd>
+        </div>
+        <div class="spec">
+          <dt data-i18n="trust_isolation">100% Worktree Isolation</dt>
+          <dd data-i18n="trust_isolation_sub">Zero working tree pollution</dd>
+        </div>
+      </dl>
     </div>
   </section>
 
-  <!-- Interactive Hero Showstopper: The Immune Laboratory -->
-  <section id="lab" class="lab-section">
-    <div class="container">
-      <div class="section-badge-header">
-        <span class="badge-tag" data-i18n="lab_tag">Interactive Lab Demonstration</span>
+  <!-- ============ LAB ============ -->
+  <section id="lab" class="sec sec-lab">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-label" data-i18n="lab_tag">Interactive Lab Demonstration</p>
         <h2 data-i18n="lab_title">The Repository Immune Response Engine</h2>
-        <p data-i18n="lab_desc">
+        <p class="sec-lede" data-i18n="lab_desc">
           Experience how IBM Bob 2.0 isolates the root cause, tests semantic twins in parallel, and pits red-team attacks against blue-team Semgrep rules in isolated git worktrees.
         </p>
-      </div>
+      </header>
 
-      <div class="lab-container">
-        <!-- Lab Top Controls Bar -->
-        <div class="lab-topbar">
-          <div class="specimen-select-group">
+      <div class="lab">
+        <div class="lab-bar">
+          <label class="specimen">
             <span class="specimen-label" data-i18n="specimen_label">Active Specimen:</span>
             <select id="specimen-select" class="specimen-select">
               <option value="datetime">Specimen #412: Naive vs Aware Datetime (Billing)</option>
               <option value="connection_leak">Specimen #587: Async DB Connection Pool Leak</option>
             </select>
-          </div>
+          </label>
 
-          <!-- 4-Phase Stepper -->
-          <div class="lab-phase-stepper">
-            <button class="phase-step active" data-phase="1">
-              <span>🧬</span> <span data-i18n="phase_1">1. Infection</span>
-            </button>
-            <button class="phase-step" data-phase="2">
-              <span>🎯</span> <span data-i18n="phase_2">2. Antibodies</span>
-            </button>
-            <button class="phase-step" data-phase="3">
-              <span>💉</span> <span data-i18n="phase_3">3. Vaccine</span>
-            </button>
-            <button class="phase-step" data-phase="4">
-              <span>💾</span> <span data-i18n="phase_4">4. Memory</span>
-            </button>
+          <div class="stepper" role="group" aria-label="Immune phases">
+            <button class="phase-step active" data-phase="1"><span data-i18n="phase_1">1. Infection</span></button>
+            <button class="phase-step" data-phase="2"><span data-i18n="phase_2">2. Antibodies</span></button>
+            <button class="phase-step" data-phase="3"><span data-i18n="phase_3">3. Vaccine</span></button>
+            <button class="phase-step" data-phase="4"><span data-i18n="phase_4">4. Memory</span></button>
           </div>
         </div>
 
-        <!-- Main Lab Grid -->
-        <div class="lab-main-grid">
-          
-          <!-- Left Column: Petri Dish & Immunity Score -->
-          <div class="lab-plate-col">
-            <div>
-              <div class="score-display">
-                <div class="score-meta-label" data-i18n="score_label">Immunity Score</div>
-                <div class="score-number-box">
-                  <span id="score-val" class="score-val">17</span>
-                  <span class="score-pct">%</span>
-                </div>
-                <div id="score-ratio" class="score-ratio">1 / 6 variants caught</div>
+        <div class="lab-grid">
+          <div class="lab-plate">
+            <div class="score">
+              <div class="score-label" data-i18n="score_label">Immunity Score</div>
+              <div class="score-num"><span id="score-val" class="score-val">17</span><span class="score-pct">%</span></div>
+              <div id="score-ratio" class="score-ratio">1 / 6 variants caught</div>
+            </div>
+
+            <div class="rounds" role="group" aria-label="Vaccine round">
+              <button class="round-btn active" data-round="0" data-i18n="round_btn_0">Round 0 (Baseline)</button>
+              <button class="round-btn" data-round="1" data-i18n="round_btn_1">Round 1 (v1 Rule)</button>
+              <button class="round-btn" data-round="2" data-i18n="round_btn_2">Round 2 (Hardened)</button>
+            </div>
+
+            <div class="plate">
+              <div class="plate-head">
+                <span data-i18n="plate_title">Variant Attack Wells</span>
+                <span>96-Well Format</span>
               </div>
-
-              <!-- Round Selector Buttons -->
-              <div class="round-selector-row">
-                <button class="round-btn active" data-round="0" data-i18n="round_btn_0">Round 0 (Baseline)</button>
-                <button class="round-btn" data-round="1" data-i18n="round_btn_1">Round 1 (v1 Rule)</button>
-                <button class="round-btn" data-round="2" data-i18n="round_btn_2">Round 2 (Hardened)</button>
-              </div>
-
-              <!-- Petri Dish Well Plate -->
-              <div class="petri-dish-wrap">
-                <div class="plate-title-row">
-                  <span data-i18n="plate_title">Variant Attack Wells</span>
-                  <span>96-Well Format</span>
-                </div>
-
+              <div class="plate-body">
+                <span class="plate-row" aria-hidden="true">A</span>
                 <div class="well-grid">
-                  <button class="well-unit" data-variant="v01" data-state="detected" title="Variant v01">
-                    <div class="well-circle"></div>
-                    <span class="well-tag">v01</span>
-                  </button>
-                  <button class="well-unit" data-variant="v02" data-state="escaped" title="Variant v02">
-                    <div class="well-circle"></div>
-                    <span class="well-tag">v02</span>
-                  </button>
-                  <button class="well-unit" data-variant="v03" data-state="escaped" title="Variant v03">
-                    <div class="well-circle"></div>
-                    <span class="well-tag">v03</span>
-                  </button>
-                  <button class="well-unit" data-variant="v04" data-state="escaped" title="Variant v04">
-                    <div class="well-circle"></div>
-                    <span class="well-tag">v04</span>
-                  </button>
-                  <button class="well-unit" data-variant="v05" data-state="escaped" title="Variant v05">
-                    <div class="well-circle"></div>
-                    <span class="well-tag">v05</span>
-                  </button>
-                  <button class="well-unit" data-variant="v06" data-state="escaped" title="Variant v06">
-                    <div class="well-circle"></div>
-                    <span class="well-tag">v06</span>
-                  </button>
+                  <button class="well-unit" data-variant="v01" data-state="detected" title="Variant v01" aria-label="Inspect variant v01"><span class="well-circle"></span><span class="well-tag">v01</span></button>
+                  <button class="well-unit" data-variant="v02" data-state="escaped" title="Variant v02" aria-label="Inspect variant v02"><span class="well-circle"></span><span class="well-tag">v02</span></button>
+                  <button class="well-unit" data-variant="v03" data-state="escaped" title="Variant v03" aria-label="Inspect variant v03"><span class="well-circle"></span><span class="well-tag">v03</span></button>
+                  <button class="well-unit" data-variant="v04" data-state="escaped" title="Variant v04" aria-label="Inspect variant v04"><span class="well-circle"></span><span class="well-tag">v04</span></button>
+                  <button class="well-unit" data-variant="v05" data-state="escaped" title="Variant v05" aria-label="Inspect variant v05"><span class="well-circle"></span><span class="well-tag">v05</span></button>
+                  <button class="well-unit" data-variant="v06" data-state="escaped" title="Variant v06" aria-label="Inspect variant v06"><span class="well-circle"></span><span class="well-tag">v06</span></button>
                 </div>
-
-                <div class="plate-legend">
-                  <div class="legend-item">
-                    <span class="dot-detected"></span>
-                    <span data-i18n="legend_detected">Neutralized (Crystal Violet)</span>
-                  </div>
-                  <div class="legend-item">
-                    <span class="dot-escaped"></span>
-                    <span data-i18n="legend_escaped">Escaped Variant (Amber)</span>
-                  </div>
-                </div>
+              </div>
+              <div class="plate-legend">
+                <span class="legend"><span class="swatch swatch-caught"></span><span data-i18n="legend_detected">Neutralized (Crystal Violet)</span></span>
+                <span class="legend"><span class="swatch swatch-escaped"></span><span data-i18n="legend_escaped">Escaped Variant (Amber)</span></span>
               </div>
             </div>
 
-            <!-- Simulation Controls -->
-            <div class="sim-controls-bar">
-              <button id="sim-play-btn" class="btn-sim-play">
-                <span>▶</span>
-                <span data-i18n="btn_sim_play">Auto-Simulate Response</span>
+            <div class="sim-controls">
+              <button id="sim-play-btn" class="btn btn-accent btn-block">
+                <svg class="ico ico-play"><use href="#i-play"/></svg>
+                <svg class="ico ico-pause"><use href="#i-pause"/></svg>
+                <span class="sim-label" data-i18n="btn_sim_play">Auto-Simulate Response</span>
               </button>
-              <button id="sim-step-btn" class="btn-sim-step" data-i18n="btn_sim_step">
-                Next Phase ➔
+              <button id="sim-step-btn" class="btn btn-ghost">
+                <span data-i18n="btn_sim_step">Next Phase</span>
+                <svg class="ico"><use href="#i-arrow"/></svg>
               </button>
             </div>
           </div>
 
-          <!-- Right Column: Interactive Tab Inspector -->
-          <div class="lab-inspector-col">
-            <div class="inspector-tabs-row">
-              <button class="tab-btn active" data-tab="diagnosis" data-i18n="tab_diagnosis">
-                <span>🔬</span> <span>Infection Diagnosis</span>
-              </button>
-              <button class="tab-btn" data-tab="twins" data-i18n="tab_twins">
-                <span>🎯</span> <span>Semantic Twins (Red/Green)</span>
-              </button>
-              <button class="tab-btn" data-tab="variants" data-i18n="tab_variants">
-                <span>⚔️</span> <span>Adversarial Red-Team</span>
-              </button>
-              <button class="tab-btn" data-tab="rule" data-i18n="tab_rule">
-                <span>🛡️</span> <span>Hardened Semgrep Rule</span>
-              </button>
-              <button class="tab-btn" data-tab="log" data-i18n="tab_log">
-                <span>📜</span> <span>CLI Evidence Log</span>
-              </button>
+          <div class="lab-inspector">
+            <div class="tabs" role="tablist" aria-label="Evidence inspector">
+              <button class="tab-btn active" data-tab="diagnosis" role="tab"><span data-i18n="tab_diagnosis">Infection Diagnosis</span></button>
+              <button class="tab-btn" data-tab="twins" role="tab"><span data-i18n="tab_twins">Semantic Twins (Red/Green)</span></button>
+              <button class="tab-btn" data-tab="variants" role="tab"><span data-i18n="tab_variants">Adversarial Red-Team</span></button>
+              <button class="tab-btn" data-tab="rule" role="tab"><span data-i18n="tab_rule">Hardened Semgrep Rule</span></button>
+              <button class="tab-btn" data-tab="log" role="tab"><span data-i18n="tab_log">CLI Evidence Log</span></button>
             </div>
-
-            <div id="inspector-content" class="inspector-body">
-              <!-- Rendered dynamically by script.js -->
-            </div>
+            <div id="inspector-content" class="inspector-body" role="tabpanel" aria-live="polite"></div>
           </div>
-
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Feature 1: The Living Repo Immune Map -->
-  <section id="repo-map" class="repo-map-section">
-    <div class="container">
-      <div class="section-badge-header">
-        <span class="badge-tag" data-i18n="repomap_tag">Repository Topology Visualizer</span>
+  <!-- ============ REPO MAP ============ -->
+  <section id="repo-map" class="sec sec-map">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-label" data-i18n="repomap_tag">Repository Topology Visualizer</p>
         <h2 data-i18n="repomap_title">The Living Repo Immune Map</h2>
-        <p data-i18n="repomap_desc">
+        <p class="sec-lede" data-i18n="repomap_desc">
           Watch semantic infection spread silently across services — and how autonomous Bob subagents deploy in parallel to isolate, prove, and immunize each node.
         </p>
-      </div>
+      </header>
 
-      <div class="repo-map-card">
-        <div class="repo-map-topbar">
+      <div class="map">
+        <div class="map-bar">
           <div class="map-status-pill status-quarantine" id="repo-network-status">
-            <span class="status-active-pulse"></span>
+            <span class="status-active-pulse" aria-hidden="true"></span>
             <span id="repo-network-status-text" data-i18n="map_status_quarantine">Network State: Vulnerable (3 Unprotected Twins)</span>
           </div>
-
-          <div class="map-controls-group">
-            <button id="btn-trigger-infection" class="btn-map-action">
-              <span>⚠️</span>
+          <div class="map-actions">
+            <button id="btn-trigger-infection" class="btn btn-ghost btn-sm">
               <span data-i18n="btn_trigger_infection">Trigger Infection Pulse</span>
             </button>
-            <button id="btn-deploy-immunity" class="btn-map-action primary">
-              <span>🧬</span>
+            <button id="btn-deploy-immunity" class="btn btn-accent btn-sm">
               <span data-i18n="btn_deploy_immunity">Deploy Bob Subagents</span>
             </button>
           </div>
         </div>
 
-        <div class="repo-canvas-stage" id="repo-canvas-stage">
-          <div class="repo-canvas-grid"></div>
+        <div class="map-scroll">
+          <div class="repo-canvas-stage" id="repo-canvas-stage">
+            <svg class="repo-svg-overlay" id="repo-svg-overlay" viewBox="0 0 1040 480" preserveAspectRatio="none" aria-hidden="true">
+              <line id="edge-origin-sub" class="repo-svg-edge" x1="160" y1="240" x2="420" y2="120" />
+              <line id="edge-origin-rem" class="repo-svg-edge" x1="160" y1="240" x2="420" y2="240" />
+              <line id="edge-origin-web" class="repo-svg-edge" x1="160" y1="240" x2="420" y2="360" />
+              <line id="edge-origin-rep" class="repo-svg-edge" x1="160" y1="240" x2="680" y2="150" />
+              <line id="edge-sub-shield" class="repo-svg-edge" x1="420" y1="120" x2="880" y2="240" />
+              <line id="edge-rem-shield" class="repo-svg-edge" x1="420" y1="240" x2="880" y2="240" />
+              <line id="edge-web-shield" class="repo-svg-edge" x1="420" y1="360" x2="880" y2="240" />
+              <line id="edge-rep-shield" class="repo-svg-edge" x1="680" y1="150" x2="880" y2="240" />
+            </svg>
 
-          <!-- SVG Edges connecting nodes -->
-          <svg class="repo-svg-overlay" id="repo-svg-overlay">
-            <line id="edge-origin-sub" class="repo-svg-edge" x1="160" y1="240" x2="420" y2="120" />
-            <line id="edge-origin-rem" class="repo-svg-edge" x1="160" y1="240" x2="420" y2="240" />
-            <line id="edge-origin-web" class="repo-svg-edge" x1="160" y1="240" x2="420" y2="360" />
-            <line id="edge-origin-rep" class="repo-svg-edge" x1="160" y1="240" x2="680" y2="150" />
-            <line id="edge-sub-shield" class="repo-svg-edge" x1="420" y1="120" x2="880" y2="240" />
-            <line id="edge-rem-shield" class="repo-svg-edge" x1="420" y1="240" x2="880" y2="240" />
-            <line id="edge-web-shield" class="repo-svg-edge" x1="420" y1="360" x2="880" y2="240" />
-            <line id="edge-rep-shield" class="repo-svg-edge" x1="680" y1="150" x2="880" y2="240" />
-          </svg>
+            <button class="repo-node origin" style="--nx: 160; --ny: 240;" data-node-id="origin">
+              <span class="node-cell" aria-hidden="true"></span>
+              <span class="node-text-wrap">
+                <span class="node-filename">invoices.py:88</span>
+                <span class="node-role-tag">Fix Origin (#412)</span>
+              </span>
+            </button>
 
-          <!-- Node: Origin Bug -->
-          <div class="repo-node origin" style="left: 160px; top: 240px;" data-node-id="origin">
-            <div class="node-icon-box">🐛</div>
-            <div class="node-text-wrap">
-              <div class="node-filename">invoices.py:88</div>
-              <div class="node-role-tag">Fix Origin (#412)</div>
-            </div>
-          </div>
+            <button class="repo-node infected" style="--nx: 420; --ny: 120;" data-node-id="sub">
+              <span class="node-cell" aria-hidden="true"></span>
+              <span class="node-text-wrap">
+                <span class="node-filename">subscriptions.py</span>
+                <span class="node-role-tag">Twin c01: renews_at</span>
+              </span>
+              <span class="node-badge-shield" id="shield-sub" style="display:none;">✓</span>
+            </button>
 
-          <!-- Node: Twin 1 -->
-          <div class="repo-node infected" style="left: 420px; top: 120px;" data-node-id="sub">
-            <div class="node-icon-box">📄</div>
-            <div class="node-text-wrap">
-              <div class="node-filename">subscriptions.py</div>
-              <div class="node-role-tag">Twin c01: renews_at</div>
-            </div>
-            <span class="node-badge-shield" id="shield-sub" style="display:none;">✓</span>
-          </div>
+            <button class="repo-node infected" style="--nx: 420; --ny: 240;" data-node-id="rem">
+              <span class="node-cell" aria-hidden="true"></span>
+              <span class="node-text-wrap">
+                <span class="node-filename">reminders.py</span>
+                <span class="node-role-tag">Twin c02: due_at diff</span>
+              </span>
+              <span class="node-badge-shield" id="shield-rem" style="display:none;">✓</span>
+            </button>
 
-          <!-- Node: Twin 2 -->
-          <div class="repo-node infected" style="left: 420px; top: 240px;" data-node-id="rem">
-            <div class="node-icon-box">⏰</div>
-            <div class="node-text-wrap">
-              <div class="node-filename">reminders.py</div>
-              <div class="node-role-tag">Twin c02: due_at diff</div>
-            </div>
-            <span class="node-badge-shield" id="shield-rem" style="display:none;">✓</span>
-          </div>
+            <button class="repo-node infected" style="--nx: 420; --ny: 360;" data-node-id="web">
+              <span class="node-cell" aria-hidden="true"></span>
+              <span class="node-text-wrap">
+                <span class="node-filename">webhooks.py</span>
+                <span class="node-role-tag">Twin c03: received_at</span>
+              </span>
+              <span class="node-badge-shield" id="shield-web" style="display:none;">✓</span>
+            </button>
 
-          <!-- Node: Twin 3 -->
-          <div class="repo-node infected" style="left: 420px; top: 360px;" data-node-id="web">
-            <div class="node-icon-box">🔌</div>
-            <div class="node-text-wrap">
-              <div class="node-filename">webhooks.py</div>
-              <div class="node-role-tag">Twin c03: received_at</div>
-            </div>
-            <span class="node-badge-shield" id="shield-web" style="display:none;">✓</span>
-          </div>
+            <button class="repo-node suspect" style="--nx: 680; --ny: 150;" data-node-id="rep">
+              <span class="node-cell" aria-hidden="true"></span>
+              <span class="node-text-wrap">
+                <span class="node-filename">monthly.py</span>
+                <span class="node-role-tag">c04: Celery Worker</span>
+              </span>
+              <span class="node-badge-shield" id="shield-rep" style="display:none; background: var(--escape-amber);">?</span>
+            </button>
 
-          <!-- Node: Suspected / Celery -->
-          <div class="repo-node" style="left: 680px; top: 150px;" data-node-id="rep">
-            <div class="node-icon-box">⚙️</div>
-            <div class="node-text-wrap">
-              <div class="node-filename">monthly.py</div>
-              <div class="node-role-tag">c04: Celery Worker</div>
-            </div>
-            <span class="node-badge-shield" id="shield-rep" style="display:none; background: var(--escape-amber);">?</span>
-          </div>
-
-          <!-- Node: Defense / Semgrep Core -->
-          <div class="repo-node immunized" style="left: 880px; top: 240px;" data-node-id="shield">
-            <div class="node-icon-box">🛡️</div>
-            <div class="node-text-wrap">
-              <div class="node-filename">rule.yml</div>
-              <div class="node-role-tag">.antibody/ Permanent Shield</div>
-            </div>
-            <span class="node-badge-shield">100%</span>
+            <button class="repo-node immunized shield" style="--nx: 880; --ny: 240;" data-node-id="shield">
+              <span class="node-cell" aria-hidden="true"></span>
+              <span class="node-text-wrap">
+                <span class="node-filename">rule.yml</span>
+                <span class="node-role-tag">.antibody/ Permanent Shield</span>
+              </span>
+              <span class="node-badge-shield">100%</span>
+            </button>
           </div>
         </div>
 
-        <div class="node-inspector-drawer" id="node-inspector-drawer">
+        <div class="map-drawer" id="node-inspector-drawer" aria-live="polite">
           <div id="node-detail-title">
             <b>Node Selected:</b> <span class="font-mono">billing/subscriptions.py:142</span>
           </div>
           <div id="node-detail-status">
             <b>Status:</b> <span class="font-mono" style="color: var(--escape-amber);">Vulnerable: Naive datetime comparison detected</span>
           </div>
-          <div id="node-detail-hint" style="color: var(--ink-muted);">
+          <div id="node-detail-hint" class="map-hint">
             Click "Deploy Bob Subagents" to watch parallel isolation, red test verification, and permanent immunization.
           </div>
         </div>
@@ -385,427 +376,452 @@
     </div>
   </section>
 
-  <!-- Problem Section: The Bug Replay Tax -->
-  <section id="problem" class="problem-section">
-    <div class="container">
-      <div class="section-badge-header">
-        <span class="badge-tag" data-i18n="problem_tag">The Bug Replay Tax</span>
+  <!-- ============ PROBLEM ============ -->
+  <section id="problem" class="sec sec-problem">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-label" data-i18n="problem_tag">The Bug Replay Tax</p>
         <h2 data-i18n="problem_title">Why Software Teams Repeatedly Pay for the Same Mistakes</h2>
-        <p data-i18n="problem_sub">
+        <p class="sec-lede" data-i18n="problem_sub">
           Developers fix symptoms in one file. Without semantic repository immunity, identical bugs resurface weeks later in other services.
         </p>
-      </div>
+      </header>
 
-      <div class="problem-grid">
-        <div class="problem-card">
-          <div class="problem-icon-wrap">🔍</div>
-          <h3 data-i18n="p_card1_title">Text Search & Grep Are Blind</h3>
-          <p data-i18n="p_card1_desc">
-            Grep can only match literal tokens. When the same architectural mistake is written with different variable names, operators, or imports, traditional search finds nothing.
-          </p>
-          <div class="card-callout-metric" data-i18n="p_card1_metric">
-            82% of architectural twin bugs escape grep
+      <ol class="tax-list">
+        <li class="tax">
+          <p class="tax-metric" data-i18n="p_card1_metric">82% of architectural twin bugs escape grep</p>
+          <div class="tax-body">
+            <h3 data-i18n="p_card1_title">Text Search & Grep Are Blind</h3>
+            <p data-i18n="p_card1_desc">
+              Grep can only match literal tokens. When the same architectural mistake is written with different variable names, operators, or imports, traditional search finds nothing.
+            </p>
           </div>
-        </div>
-
-        <div class="problem-card">
-          <div class="problem-icon-wrap">📋</div>
-          <h3 data-i18n="p_card2_title">Linters Are Generic & Impersonal</h3>
-          <p data-i18n="p_card2_desc">
-            Off-the-shelf linters enforce generic style rules. They know nothing about your company's proprietary ORM quirks, multi-tenant boundaries, or custom billing invariant.
-          </p>
-          <div class="card-callout-metric" data-i18n="p_card2_metric">
-            0% coverage for repo-specific business invariants
+        </li>
+        <li class="tax">
+          <p class="tax-metric" data-i18n="p_card2_metric">0% coverage for repo-specific business invariants</p>
+          <div class="tax-body">
+            <h3 data-i18n="p_card2_title">Linters Are Generic & Impersonal</h3>
+            <p data-i18n="p_card2_desc">
+              Off-the-shelf linters enforce generic style rules. They know nothing about your company's proprietary ORM quirks, multi-tenant boundaries, or custom billing invariant.
+            </p>
           </div>
-        </div>
-
-        <div class="problem-card">
-          <div class="problem-icon-wrap">🤖</div>
-          <h3 data-i18n="p_card3_title">LLM Chatbots Hallucinate Advice</h3>
-          <p data-i18n="p_card3_desc">
-            Generic AI code assistants guess without executing tests. They generate unverified opinions that developers must manually double-check, adding cognitive fatigue.
-          </p>
-          <div class="card-callout-metric" data-i18n="p_card3_metric">
-            Unverified AI suggestions waste 4.2h / week
+        </li>
+        <li class="tax">
+          <p class="tax-metric" data-i18n="p_card3_metric">Unverified AI suggestions waste 4.2h / week</p>
+          <div class="tax-body">
+            <h3 data-i18n="p_card3_title">LLM Chatbots Hallucinate Advice</h3>
+            <p data-i18n="p_card3_desc">
+              Generic AI code assistants guess without executing tests. They generate unverified opinions that developers must manually double-check, adding cognitive fatigue.
+            </p>
           </div>
-        </div>
-      </div>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <!-- Feature 2: Mutation Microscope (AST Dissector) -->
-  <section id="microscope" class="microscope-section">
-    <div class="container">
-      <div class="section-badge-header">
-        <span class="badge-tag" data-i18n="microscope_tag">Deep Compiler Inspection</span>
+  <!-- ============ MICROSCOPE ============ -->
+  <section id="microscope" class="sec sec-scope">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-label" data-i18n="microscope_tag">Deep Compiler Inspection</p>
         <h2 data-i18n="microscope_title">Mutation Microscope: AST Dissector</h2>
-        <p data-i18n="microscope_desc">
+        <p class="sec-lede" data-i18n="microscope_desc">
           Compare how standard text grep sees code vs. how IBM Bob's Abstract Syntax Tree (AST) engine uncovers fatal runtime type mismatches.
         </p>
+      </header>
+
+      <div class="lens-switch" role="group" aria-label="Inspection lens">
+        <button id="lens-mode-grep" class="lens-mode-btn" data-mode="grep"><span data-i18n="lens_grep">Human / Grep View (Blind)</span></button>
+        <button id="lens-mode-ast" class="lens-mode-btn active" data-mode="ast"><span data-i18n="lens_ast">Bob AST Semantic X-Ray (Immune)</span></button>
       </div>
 
-      <div class="microscope-card">
-        <div style="padding: 24px 24px 0; text-align: center;">
-          <div class="microscope-view-selector">
-            <button id="lens-mode-grep" class="lens-mode-btn" data-mode="grep">
-              <span>🔍</span>
-              <span data-i18n="lens_grep">Human / Grep View (Blind)</span>
-            </button>
-            <button id="lens-mode-ast" class="lens-mode-btn active" data-mode="ast">
-              <span>🔬</span>
-              <span data-i18n="lens_ast">Bob AST Semantic X-Ray (Immune)</span>
-            </button>
+      <div class="scope-grid">
+        <div class="scope-panel">
+          <div class="scope-head">
+            <span id="ast-source-label">Source Code: billing/subscriptions.py:142</span>
+            <span class="twin-badge" id="ast-scan-badge">ANALYZING</span>
           </div>
+          <div class="code-window">
+            <div class="code-window-header">
+              <div class="window-filename">billing/subscriptions.py</div>
+            </div>
+            <pre class="code-pre"><code id="microscope-code-block"></code></pre>
+          </div>
+          <div id="microscope-explanation-text" class="scope-note"></div>
         </div>
 
-        <div class="ast-dissector-grid">
-          <!-- Left: Code & Text View -->
-          <div class="ast-panel-box">
-            <div class="ast-panel-head">
-              <span id="ast-source-label">Source Code: billing/subscriptions.py:142</span>
-              <span class="twin-badge" id="ast-scan-badge">ANALYZING</span>
-            </div>
-            
-            <div class="code-window">
-              <div class="code-window-header">
-                <div class="window-dots"><span></span><span></span><span></span></div>
-                <div class="window-filename">billing/subscriptions.py</div>
-              </div>
-              <pre class="code-pre"><code id="microscope-code-block"><span class="hl-keyword">def</span> <span class="hl-func">check_renewal</span>(sub):
-    <span class="hl-comment"># Developer assumes now() is compatible with renews_at</span>
-    <span style="background: rgba(248, 113, 113, 0.2); display: block; margin: 0 -16px; padding: 0 16px;">    <span class="hl-keyword">if</span> sub.renews_at &lt; datetime.now():</span>
-        sub.trigger_billing_cycle()
-        <span class="hl-keyword">return</span> <span class="hl-string">"renewed"</span></code></pre>
-            </div>
-
-            <div id="microscope-explanation-text" style="margin-top: 16px; font-size: 13px; color: var(--ink-secondary); line-height: 1.6;">
-              <!-- Dynamic explanation based on active lens -->
-            </div>
+        <div class="scope-panel">
+          <div class="scope-head">
+            <span>Compiler Syntax Tree & Type Invariant</span>
+            <span class="scope-engine">ENGINE: SEMGREP + AST</span>
           </div>
-
-          <!-- Right: AST & Semgrep Compiler View -->
-          <div class="ast-panel-box">
-            <div class="ast-panel-head">
-              <span>Compiler Syntax Tree & Type Invariant</span>
-              <span class="font-mono" style="font-size: 11px; color: var(--stain-violet);">ENGINE: SEMGREP + AST</span>
-            </div>
-
-            <div class="ast-tree-diagram" id="ast-diagram-view">
-              <!-- Rendered dynamically -->
-            </div>
-
-            <div style="margin-top: 16px; padding: 12px; background: var(--bg-surface); border-radius: var(--radius-sm); border: 1px solid var(--border-surgical); font-size: 12px;">
-              <b style="color: var(--ink-primary);">Why Grep Misses This:</b>
-              <span style="color: var(--ink-secondary);" id="ast-grep-limitation">
-                Grep searches for literal strings. When written as <code>renews_at - now()</code> or <code>utcnow()</code> or across 2 function scopes, grep returns 0 hits.
-              </span>
-            </div>
+          <div class="ast-tree-diagram" id="ast-diagram-view"></div>
+          <div class="scope-why">
+            <b>Why Grep Misses This:</b>
+            <span id="ast-grep-limitation">
+              Grep searches for literal strings. When written as <code>renews_at - now()</code> or <code>utcnow()</code> or across 2 function scopes, grep returns 0 hits.
+            </span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- The 4 Biological Phases -->
-  <section id="phases" class="phases-section">
-    <div class="container">
-      <div class="section-badge-header">
-        <span class="badge-tag" data-i18n="phases_tag">Biological Metaphor Engineered for Code</span>
+  <!-- ============ PHASES ============ -->
+  <section id="phases" class="sec sec-phases">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-label" data-i18n="phases_tag">Biological Metaphor Engineered for Code</p>
         <h2 data-i18n="phases_title">The 4-Phase Immune Loop</h2>
-        <p>A closed-loop autonomous system built directly on IBM Bob 2.0 primitives.</p>
-      </div>
+        <p class="sec-lede">A closed-loop autonomous system built directly on IBM Bob 2.0 primitives.</p>
+      </header>
 
-      <div class="phases-timeline-wrap">
-        <div class="phase-card">
+      <ol class="loop">
+        <li class="loop-step">
           <div class="phase-num">PHASE 01</div>
           <h3 data-i18n="phase_card1_title">1. Infection</h3>
-          <div class="phase-who" data-i18n="phase_card1_who">Who: IBM Bob 2.0 (Document Understanding)</div>
+          <p class="phase-who" data-i18n="phase_card1_who">Who: IBM Bob 2.0 (Document Understanding)</p>
           <p data-i18n="phase_card1_desc">
             Bob ingests the fix diff, commit message, and linked incident postmortems (Markdown, PDF) to extract the abstract root cause: the mistake concept, not the file location.
           </p>
-          <div class="phase-footer-detail">Output: diagnosis.json</div>
-        </div>
-
-        <div class="phase-card">
+          <code class="loop-out">Output: diagnosis.json</code>
+        </li>
+        <li class="loop-step">
           <div class="phase-num">PHASE 02</div>
           <h3 data-i18n="phase_card2_title">2. Antibodies</h3>
-          <div class="phase-who" data-i18n="phase_card2_who">Who: Bob Subagents + Deterministic CLI</div>
+          <p class="phase-who" data-i18n="phase_card2_who">Who: Bob Subagents + Deterministic CLI</p>
           <p data-i18n="phase_card2_desc">
             Autonomous subagents hunt twins across the codebase by meaning. A twin is confirmed ONLY when the CLI executes a pytest that fails (red) and subsequent fix passes (green).
           </p>
-          <div class="phase-footer-detail">Output: candidates.json + verdicts/</div>
-        </div>
-
-        <div class="phase-card">
+          <code class="loop-out">Output: candidates.json + verdicts/</code>
+        </li>
+        <li class="loop-step">
           <div class="phase-num">PHASE 03</div>
           <h3 data-i18n="phase_card3_title">3. Vaccine</h3>
-          <div class="phase-who" data-i18n="phase_card3_who">Who: Red-Team Subagent vs Blue-Team Bob</div>
+          <p class="phase-who" data-i18n="phase_card3_who">Who: Red-Team Subagent vs Blue-Team Bob</p>
           <p data-i18n="phase_card3_desc">
             A red-team subagent (which never sees the defense) writes realistic mutation attacks in isolated git worktrees. Bob hardens the Semgrep rule until immunity hits 100%.
           </p>
-          <div class="phase-footer-detail">Output: vaccine/round_N.json</div>
-        </div>
-
-        <div class="phase-card">
+          <code class="loop-out">Output: vaccine/round_N.json</code>
+        </li>
+        <li class="loop-step">
           <div class="phase-num">PHASE 04</div>
           <h3 data-i18n="phase_card4_title">4. Memory</h3>
-          <div class="phase-who" data-i18n="phase_card4_who">Who: GitOps in .antibody/ directory</div>
+          <p class="phase-who" data-i18n="phase_card4_who">Who: GitOps in .antibody/ directory</p>
           <p data-i18n="phase_card4_desc">
             The hardened rule message preserves the incident context and fix link for future developers. Everything lives in git; no external database or server needed.
           </p>
-          <div class="phase-footer-detail">Output: .antibody/antibodies/</div>
-        </div>
-      </div>
+          <code class="loop-out">Output: .antibody/antibodies/</code>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <!-- Proof Over Opinion: Anti-Hallucination Engine -->
-  <section id="proof" class="proof-section">
-    <div class="container">
-      <div class="section-badge-header">
-        <span class="badge-tag" data-i18n="proof_tag">Anti-Hallucination Philosophy</span>
-        <h2 data-i18n="proof_title">Proof Over Opinion</h2>
-        <p data-i18n="proof_sub">Antibody refuses to make claims it cannot demonstrate with real compiler or pytest execution.</p>
+  <!-- ============ ADVERSARIAL SELF-PLAY ============ -->
+  <section id="adversarial" class="sec sec-adv">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-label" data-i18n="adv_tag">Adversarial Self-Training</p>
+        <h2 data-i18n="adv_title">Red Team vs. Blue Team</h2>
+        <p class="sec-lede" data-i18n="adv_sub">How Antibody attacks itself until it reaches 100% immunity.</p>
+      </header>
+
+      <p class="adv-intro" data-i18n="adv_intro">Most tools write a static linter rule and “pray” it works. Antibody uses adversarial game dynamics (self-play), splitting IBM Bob into two autonomous agents that compete against each other blind:</p>
+
+      <div class="duel">
+        <article class="team team-red">
+          <div class="team-head">
+            <span class="team-dot" aria-hidden="true"></span>
+            <span class="team-role" data-i18n="adv_red_role">Attacker subagent</span>
+          </div>
+          <h3 data-i18n="adv_red_title">The Red Team</h3>
+          <p data-i18n="adv_red_p1">An isolated subagent that never has access to the defense rule.</p>
+          <p data-i18n="adv_red_p2">Its only mission is to act like a malicious attacker or a careless developer: it invents tricky mutations of the bug to fool the system — changing operators, using aliases like utcnow(), flipping operands, or hiding the error in helper variables 15 lines later.</p>
+          <ul class="mutations" aria-label="Example mutations">
+            <li><code>due_at - now()</code></li>
+            <li><code>datetime.utcnow()</code></li>
+            <li><code>now() &gt; hold_until</code></li>
+            <li><code>ts = now()  # …+15 lines</code></li>
+          </ul>
+          <p class="blind"><span data-i18n="adv_blind_label">Blind to</span> <code>rule.yml</code></p>
+        </article>
+
+        <div class="duel-wall" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6Z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 20 20 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+
+        <article class="team team-blue">
+          <div class="team-head">
+            <span class="team-dot" aria-hidden="true"></span>
+            <span class="team-role" data-i18n="adv_blue_role">Bob, the defender</span>
+          </div>
+          <h3 data-i18n="adv_blue_title">The Blue Team</h3>
+          <p data-i18n="adv_blue_p1">The agent in charge of writing the permanent protection rule in Semgrep.</p>
+          <p data-i18n="adv_blue_p2">It doesn't see the attacks in advance either: it must design a robust semantic pattern based purely on the root cause of the problem.</p>
+          <div class="code-window">
+            <div class="code-window-header"><div class="window-filename">rule.yml · pattern-either</div></div>
+            <pre class="code-pre"><code><span class="hl-comment"># derived from the root cause, not the attacks</span>
+- <span class="hl-keyword">pattern:</span> $X &lt; datetime.now()
+- <span class="hl-keyword">pattern:</span> datetime.now() &gt; $X
+- <span class="hl-keyword">pattern:</span> ($X - datetime.now()).days
+- <span class="hl-keyword">pattern:</span> datetime.utcnow()</code></pre>
+          </div>
+          <p class="blind"><span data-i18n="adv_blind_label">Blind to</span> <code>attacks/</code></p>
+        </article>
       </div>
 
-      <div class="comparison-split-grid">
-        <div class="comparison-box box-speculative">
-          <div class="comparison-box-head">
-            <span class="box-label" data-i18n="speculative_head">Generic LLM Code Reviewers</span>
-            <span class="box-badge" data-i18n="speculative_badge">Unverified Guesses</span>
+      <div class="arena">
+        <div class="arena-copy">
+          <h3 data-i18n="adv_arena_title">The battle in an isolated git worktree</h3>
+          <ol class="arena-steps">
+            <li data-i18n="adv_arena_1">The Antibody CLI applies each mutated attack in a temporary, isolated environment — never touching your working code.</li>
+            <li data-i18n="adv_arena_2">It runs Semgrep and the real tests. If a variant slips through unnoticed, it's marked as “Escaped” (Amber alert).</li>
+            <li data-i18n="adv_arena_3">With that evidence, Bob analyzes where the bug leaked and hardens the rule round after round (Round 0 → Round 1 → Round 2), until 100% of variants are neutralized and stained Crystal Violet.</li>
+          </ol>
+        </div>
+
+        <div class="arena-track" role="img" aria-label="Specimen #412: Round 0 catches 1 of 6 variants (17%), Round 1 catches 3 of 6 (50%), Round 2 catches 6 of 6 (100%).">
+          <div class="arena-track-head">
+            <span>.antibody/runs/…/vaccine/</span>
+            <span>Specimen #412</span>
+          </div>
+          <div class="round-row" style="--d: 0">
+            <span class="round-name" data-i18n="adv_r0">Round 0</span>
+            <span class="mini-wells"><i class="c"></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="round-score">17%</span>
+          </div>
+          <div class="round-row" style="--d: 1">
+            <span class="round-name" data-i18n="adv_r1">Round 1</span>
+            <span class="mini-wells"><i class="c"></i><i class="c"></i><i></i><i></i><i></i><i class="c"></i></span>
+            <span class="round-score">50%</span>
+          </div>
+          <div class="round-row" style="--d: 2">
+            <span class="round-name" data-i18n="adv_r2">Round 2</span>
+            <span class="mini-wells"><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i></span>
+            <span class="round-score round-score-win">100%</span>
+          </div>
+          <div class="arena-legend">
+            <span class="legend"><span class="swatch swatch-caught"></span><span data-i18n="legend_detected">Neutralized (Crystal Violet)</span></span>
+            <span class="legend"><span class="swatch swatch-escaped"></span><span data-i18n="legend_escaped">Escaped Variant (Amber)</span></span>
+          </div>
+        </div>
+      </div>
+
+      <blockquote class="adv-result">
+        <p data-i18n="adv_result">The result: a defense that wasn't validated by human opinions, but forged under fire against real adversarial mutations.</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ============ PROOF ============ -->
+  <section id="proof" class="sec sec-proof">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-label" data-i18n="proof_tag">Anti-Hallucination Philosophy</p>
+        <h2 data-i18n="proof_title">Proof Over Opinion</h2>
+        <p class="sec-lede" data-i18n="proof_sub">Antibody refuses to make claims it cannot demonstrate with real compiler or pytest execution.</p>
+      </header>
+
+      <div class="versus">
+        <article class="verdict verdict-guess">
+          <div class="verdict-head">
+            <span class="verdict-who" data-i18n="speculative_head">Generic LLM Code Reviewers</span>
+            <span class="verdict-tag" data-i18n="speculative_badge">Unverified Guesses</span>
           </div>
           <h3>Speculative Opinions</h3>
           <p data-i18n="speculative_desc">
             Looks at code and generates speculative comments: 'Line 42 might be problematic'. Requires human engineers to manually write repros and investigate false alarms.
           </p>
           <div class="code-window">
-            <div class="code-window-header">
-              <div class="window-dots"><span></span><span></span><span></span></div>
-              <div class="window-filename">hallucination_example.txt</div>
-            </div>
-            <pre class="code-pre"><code><span style="color: #F87171;">⚠️ AI Assistant: "This datetime comparison might cause issues if naive. 
+            <div class="code-window-header"><div class="window-filename">hallucination_example.txt</div></div>
+            <pre class="code-pre"><code><span class="c-warn">AI Assistant: "This datetime comparison might cause issues if naive.
 Consider refactoring billing/reports/monthly.py."</span>
-[!] Candidate cannot be tested. Developer wastes 35 mins verifying false positive.</code></pre>
+<span class="c-dim">[!] Candidate cannot be tested. Developer wastes 35 mins verifying false positive.</span></code></pre>
           </div>
-        </div>
+        </article>
 
-        <div class="comparison-box box-verified">
-          <div class="comparison-box-head">
-            <span class="box-label" data-i18n="verified_head">Antibody with IBM Bob 2.0</span>
-            <span class="box-badge" data-i18n="verified_badge">Deterministic Red/Green Proof</span>
+        <div class="versus-mark" aria-hidden="true">vs</div>
+
+        <article class="verdict verdict-proof">
+          <div class="verdict-head">
+            <span class="verdict-who" data-i18n="verified_head">Antibody with IBM Bob 2.0</span>
+            <span class="verdict-tag" data-i18n="verified_badge">Deterministic Red/Green Proof</span>
           </div>
           <h3>Verifiable Compiler Proof</h3>
           <p data-i18n="verified_desc">
             Never reports a twin it cannot execute. Spawns an isolated subagent that writes a test. The twin is recorded if and only if pytest returns exit code 1 (failing) then 0 (passing).
           </p>
           <div class="code-window">
-            <div class="code-window-header">
-              <div class="window-dots"><span></span><span></span><span></span></div>
-              <div class="window-filename">cli_deterministic_verdict.json</div>
-            </div>
-            <pre class="code-pre"><code><span style="color: #4ADE80;">{
-  "candidate_id": "c01",
-  "verdict": "CONFIRMED_TWIN",
-  "red_phase": { "exit_code": 1, "failing_assertion": "TypeError" },
-  "green_phase": { "exit_code": 0, "status": "PASSED" },
-  "recorded_by": "antibody-cli"
-}</span></code></pre>
+            <div class="code-window-header"><div class="window-filename">cli_deterministic_verdict.json</div></div>
+            <pre class="code-pre"><code>{
+  <span class="hl-func">"candidate_id"</span>: <span class="hl-string">"c01"</span>,
+  <span class="hl-func">"verdict"</span>: <span class="c-pass">"CONFIRMED_TWIN"</span>,
+  <span class="hl-func">"red_phase"</span>: { <span class="hl-func">"exit_code"</span>: <span class="c-fail">1</span>, <span class="hl-func">"failing_assertion"</span>: <span class="hl-string">"TypeError"</span> },
+  <span class="hl-func">"green_phase"</span>: { <span class="hl-func">"exit_code"</span>: <span class="c-pass">0</span>, <span class="hl-func">"status"</span>: <span class="c-pass">"PASSED"</span> },
+  <span class="hl-func">"recorded_by"</span>: <span class="hl-string">"antibody-cli"</span>
+}</code></pre>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- How it Leverages IBM Bob 2.0 -->
-  <section id="bob" class="bob-section">
-    <div class="container">
-      <div class="section-badge-header">
-        <span class="badge-tag" data-i18n="bob_tag">Powered by IBM Bob 2.0</span>
+  <!-- ============ BOB ============ -->
+  <section id="bob" class="sec sec-bob">
+    <div class="wrap bob-layout">
+      <header class="sec-head sec-head-rail">
+        <p class="sec-label" data-i18n="bob_tag">Powered by IBM Bob 2.0</p>
         <h2 data-i18n="bob_title">How Antibody Leverages Bob 2.0 Superpowers</h2>
-        <p>Built as a first-class native Bob Mode using commands, skills, and subagents.</p>
-      </div>
+        <p class="sec-lede">Built as a first-class native Bob Mode using commands, skills, and subagents.</p>
+      </header>
 
-      <div class="bob-grid">
-        <div class="bob-card">
-          <div class="bob-card-icon">📄</div>
+      <div class="powers">
+        <article class="power">
           <h3 data-i18n="bob_c1_title">Multimodal Incident Ingestion</h3>
-          <p data-i18n="bob_c1_desc">
-            Bob reads fix diffs, GitHub issues, and architecture postmortems (PDF, Word, Markdown) to distill the exact underlying failure pattern.
-          </p>
-        </div>
-
-        <div class="bob-card">
-          <div class="bob-card-icon">🌐</div>
+          <p data-i18n="bob_c1_desc">Bob reads fix diffs, GitHub issues, and architecture postmortems (PDF, Word, Markdown) to distill the exact underlying failure pattern.</p>
+        </article>
+        <article class="power">
           <h3 data-i18n="bob_c2_title">Full Repository Semantic Graph</h3>
-          <p data-i18n="bob_c2_desc">
-            Bob traverses the entire repository structure, recognizing identical design mistakes even when syntax and variable naming differ completely.
-          </p>
-        </div>
-
-        <div class="bob-card">
-          <div class="bob-card-icon">👥</div>
+          <p data-i18n="bob_c2_desc">Bob traverses the entire repository structure, recognizing identical design mistakes even when syntax and variable naming differ completely.</p>
+        </article>
+        <article class="power">
           <h3 data-i18n="bob_c3_title">Parallel Autonomous Subagents</h3>
-          <p data-i18n="bob_c3_desc">
-            One subagent per twin candidate proves issues in complete worktree isolation without blocking developer checkouts.
-          </p>
-        </div>
-
-        <div class="bob-card">
-          <div class="bob-card-icon">🎯</div>
+          <p data-i18n="bob_c3_desc">One subagent per twin candidate proves issues in complete worktree isolation without blocking developer checkouts.</p>
+        </article>
+        <article class="power">
           <h3 data-i18n="bob_c4_title">Game-Theoretic Self-Play</h3>
-          <p data-i18n="bob_c4_desc">
-            Bob acts as both Red-Team attacker (writing adversarial variants) and Blue-Team defender (writing Semgrep rules), converging on 100% immunity.
-          </p>
-        </div>
+          <p data-i18n="bob_c4_desc">Bob acts as both Red-Team attacker (writing adversarial variants) and Blue-Team defender (writing Semgrep rules), converging on 100% immunity.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- GitOps Architecture: No SaaS, Pure Code -->
-  <section id="gitops" class="gitops-section">
-    <div class="container">
-      <div class="gitops-layout">
-        <div>
-          <span class="badge-tag" data-i18n="gitops_tag">Zero Infrastructure Overhead</span>
-          <h2 data-i18n="gitops_title" style="font-size: clamp(26px, 3.5vw, 36px); margin: 12px 0;">Pure GitOps: Everything Lives in Your Repository</h2>
-          <p data-i18n="gitops_desc" style="font-size: 15px; color: var(--ink-secondary); line-height: 1.6; margin-bottom: 24px;">
-            No SaaS accounts. No third-party data transmission. No database to manage. All evidence, scores, and permanent rules are plain files checked into git and reviewed via standard Pull Requests.
-          </p>
-          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <div style="padding: 10px 14px; background: var(--bg-surface); border-radius: var(--radius-sm); border: 1px solid var(--border-surgical);">
-              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--stain-violet); font-weight: 600;">✓ Git-Auditable</span>
-            </div>
-            <div style="padding: 10px 14px; background: var(--bg-surface); border-radius: var(--radius-sm); border: 1px solid var(--border-surgical);">
-              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--proof-green); font-weight: 600;">✓ Zero Cloud Vendor Lock-in</span>
-            </div>
-            <div style="padding: 10px 14px; background: var(--bg-surface); border-radius: var(--radius-sm); border: 1px solid var(--border-surgical);">
-              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-primary); font-weight: 600;">✓ CI/CD Compatible</span>
-            </div>
-          </div>
-        </div>
+  <!-- ============ GITOPS ============ -->
+  <section id="gitops" class="sec sec-gitops">
+    <div class="wrap gitops">
+      <div class="gitops-copy">
+        <p class="sec-label" data-i18n="gitops_tag">Zero Infrastructure Overhead</p>
+        <h2 data-i18n="gitops_title">Pure GitOps: Everything Lives in Your Repository</h2>
+        <p class="sec-lede" data-i18n="gitops_desc">
+          No SaaS accounts. No third-party data transmission. No database to manage. All evidence, scores, and permanent rules are plain files checked into git and reviewed via standard Pull Requests.
+        </p>
+        <ul class="checks">
+          <li>Git-Auditable</li>
+          <li>Zero Cloud Vendor Lock-in</li>
+          <li>CI/CD Compatible</li>
+        </ul>
+      </div>
 
-        <div class="tree-view">
-          <div><span class="tree-folder">.bob/</span> <span class="tree-comment"># Native IBM Bob 2.0 mode</span></div>
-          <div>&nbsp;&nbsp;├── custom_modes.yaml</div>
-          <div>&nbsp;&nbsp;├── commands/antibody.md</div>
-          <div>&nbsp;&nbsp;└── skills/antibody-vaccine/</div>
-          <div><span class="tree-folder">.antibody/</span> <span class="tree-comment"># Immutable evidence store</span></div>
-          <div>&nbsp;&nbsp;├── config.json <span class="tree-comment"># Token & round budgets</span></div>
-          <div>&nbsp;&nbsp;├── runs/20260926-101500/</div>
-          <div>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── diagnosis.json</div>
-          <div>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── verdicts/c01.json</div>
-          <div>&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;└── scoreboard.json</div>
-          <div>&nbsp;&nbsp;└── <span class="tree-folder">antibodies/001-naive-vs-aware/</span></div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="tree-file" style="color: #A7F3D0;">rule.yml</span> <span class="tree-comment"># Hardened Semgrep rule</span></div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── history.md <span class="tree-comment"># Incident story for devs</span></div>
-        </div>
+      <div class="tree-view" role="img" aria-label="Repository file tree for .bob and .antibody directories">
+<pre><span class="tree-folder">.bob/</span>                         <span class="tree-comment"># Native IBM Bob 2.0 mode</span>
+  ├── custom_modes.yaml
+  ├── commands/antibody.md
+  └── skills/antibody-vaccine/
+<span class="tree-folder">.antibody/</span>                    <span class="tree-comment"># Immutable evidence store</span>
+  ├── config.json              <span class="tree-comment"># Token &amp; round budgets</span>
+  ├── runs/20260926-101500/
+  │   ├── diagnosis.json
+  │   ├── verdicts/c01.json
+  │   └── scoreboard.json
+  └── <span class="tree-folder">antibodies/001-naive-vs-aware/</span>
+      ├── <span class="tree-file">rule.yml</span>             <span class="tree-comment"># Hardened Semgrep rule</span>
+      └── history.md           <span class="tree-comment"># Incident story for devs</span></pre>
       </div>
     </div>
   </section>
 
-  <!-- Hackathon ROI & Benchmark Table -->
-  <section id="roi" class="roi-section">
-    <div class="container">
-      <div class="section-badge-header">
-        <span class="badge-tag" data-i18n="roi_tag">Measured Hackathon Benchmark</span>
+  <!-- ============ ROI ============ -->
+  <section id="roi" class="sec sec-roi">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-label" data-i18n="roi_tag">Measured Hackathon Benchmark</p>
         <h2 data-i18n="roi_title">Proven Impact on Real Codebases</h2>
-        <p>Empirical results measured during the IBM Bob 2.0 Hackathon demo benchmark.</p>
-      </div>
+        <p class="sec-lede">Empirical results measured during the IBM Bob 2.0 Hackathon demo benchmark.</p>
+      </header>
 
-      <!-- Feature 3: Financial & Engineering ROI Calculator -->
-      <div id="roi-calc" style="margin-bottom: 48px;">
-        <div class="calc-grid-wrap">
-          <!-- Left: Interactive Sliders -->
-          <div class="calc-inputs-pane">
-            <div>
-              <h3 style="font-size: 20px; margin-bottom: 6px;" data-i18n="calc_heading">Interactive Cost Calculator</h3>
-              <p style="font-size: 13px; color: var(--ink-muted);" data-i18n="calc_sub">Adjust parameters to simulate your team's duplicate bug elimination savings.</p>
-            </div>
-
-            <!-- Slider 1: Team Size -->
-            <div class="slider-unit">
-              <div class="slider-label-row">
-                <span class="slider-title" data-i18n="slider_team_title">Engineering Team Size:</span>
-                <span class="slider-display-val" id="val-team-size">20 devs</span>
-              </div>
-              <input type="range" min="5" max="150" value="20" step="5" class="custom-range" id="input-team-size">
-            </div>
-
-            <!-- Slider 2: Bugs Per Month -->
-            <div class="slider-unit">
-              <div class="slider-label-row">
-                <span class="slider-title" data-i18n="slider_bugs_title">Critical Bug Fixes / Month:</span>
-                <span class="slider-display-val" id="val-bugs-month">8 fixes</span>
-              </div>
-              <input type="range" min="1" max="25" value="8" step="1" class="custom-range" id="input-bugs-month">
-            </div>
-
-            <!-- Slider 3: Dev Hourly Rate -->
-            <div class="slider-unit">
-              <div class="slider-label-row">
-                <span class="slider-title" data-i18n="slider_rate_title">Blended Dev Rate ($ USD / hr):</span>
-                <span class="slider-display-val" id="val-dev-rate">$85 / hr</span>
-              </div>
-              <input type="range" min="40" max="160" value="85" step="5" class="custom-range" id="input-dev-rate">
-            </div>
+      <div id="roi-calc" class="calc">
+        <div class="calc-inputs">
+          <div>
+            <h3 class="calc-title" data-i18n="calc_heading">Interactive Cost Calculator</h3>
+            <p class="calc-sub" data-i18n="calc_sub">Adjust parameters to simulate your team's duplicate bug elimination savings.</p>
           </div>
 
-          <!-- Right: Real-time Dynamic ROI Cards -->
-          <div class="calc-outputs-grid">
-            <div class="calc-stat-box">
-              <div class="stat-box-label" data-i18n="calc_out_money_label">Annual Engineering Cost Saved</div>
-              <div class="stat-box-number stat-highlight-green" id="out-money-saved">$48,960</div>
-              <div class="stat-box-desc" data-i18n="calc_out_money_desc">Based on eliminating duplicate diagnosis and repeated emergency fixes.</div>
-            </div>
+          <div class="slider">
+            <label class="slider-row" for="input-team-size">
+              <span data-i18n="slider_team_title">Engineering Team Size:</span>
+              <output class="slider-val" id="val-team-size">20 devs</output>
+            </label>
+            <input type="range" min="5" max="150" value="20" step="5" class="custom-range" id="input-team-size">
+          </div>
 
-            <div class="calc-stat-box">
-              <div class="stat-box-label" data-i18n="calc_out_hours_label">Duplicate Triage Hours Saved</div>
-              <div class="stat-box-number" id="out-hours-saved">576 hrs</div>
-              <div class="stat-box-desc" data-i18n="calc_out_hours_desc">Developer hours reclaimed from manual grep and postmortem re-investigation.</div>
-            </div>
+          <div class="slider">
+            <label class="slider-row" for="input-bugs-month">
+              <span data-i18n="slider_bugs_title">Critical Bug Fixes / Month:</span>
+              <output class="slider-val" id="val-bugs-month">8 fixes</output>
+            </label>
+            <input type="range" min="1" max="25" value="8" step="1" class="custom-range" id="input-bugs-month">
+          </div>
 
-            <div class="calc-stat-box">
-              <div class="stat-box-label" data-i18n="calc_out_regressions_label">Silent Twin Bugs Neutralized</div>
-              <div class="stat-box-number" style="color: var(--stain-violet);" id="out-regressions-stopped">24 bugs</div>
-              <div class="stat-box-desc" data-i18n="calc_out_regressions_desc">Identical semantic errors killed before ever reaching production.</div>
-            </div>
+          <div class="slider">
+            <label class="slider-row" for="input-dev-rate">
+              <span data-i18n="slider_rate_title">Blended Dev Rate ($ USD / hr):</span>
+              <output class="slider-val" id="val-dev-rate">$85 / hr</output>
+            </label>
+            <input type="range" min="40" max="160" value="85" step="5" class="custom-range" id="input-dev-rate">
+          </div>
+        </div>
 
-            <div class="calc-stat-box">
-              <div class="stat-box-label" data-i18n="calc_out_token_label">Bob Subagent Efficiency</div>
-              <div class="stat-box-number" style="color: var(--ink-primary);">100% Deterministic</div>
-              <div class="stat-box-desc" data-i18n="calc_out_token_desc">Zero tokens burned re-running hallucinated advice. Proof recorded by CLI.</div>
-            </div>
+        <div class="calc-out">
+          <div class="readout readout-hero">
+            <div class="readout-label" data-i18n="calc_out_money_label">Annual Engineering Cost Saved</div>
+            <div class="readout-num" id="out-money-saved">$48,960</div>
+            <div class="readout-desc" data-i18n="calc_out_money_desc">Based on eliminating duplicate diagnosis and repeated emergency fixes.</div>
+          </div>
+          <div class="readout">
+            <div class="readout-label" data-i18n="calc_out_hours_label">Duplicate Triage Hours Saved</div>
+            <div class="readout-num" id="out-hours-saved">576 hrs</div>
+            <div class="readout-desc" data-i18n="calc_out_hours_desc">Developer hours reclaimed from manual grep and postmortem re-investigation.</div>
+          </div>
+          <div class="readout">
+            <div class="readout-label" data-i18n="calc_out_regressions_label">Silent Twin Bugs Neutralized</div>
+            <div class="readout-num readout-violet" id="out-regressions-stopped">24 bugs</div>
+            <div class="readout-desc" data-i18n="calc_out_regressions_desc">Identical semantic errors killed before ever reaching production.</div>
+          </div>
+          <div class="readout">
+            <div class="readout-label" data-i18n="calc_out_token_label">Bob Subagent Efficiency</div>
+            <div class="readout-num readout-sm">100% Deterministic</div>
+            <div class="readout-desc" data-i18n="calc_out_token_desc">Zero tokens burned re-running hallucinated advice. Proof recorded by CLI.</div>
           </div>
         </div>
       </div>
 
-      <div class="roi-table-wrap">
-        <table class="roi-table">
+      <div class="table-wrap">
+        <table class="bench">
           <thead>
             <tr>
-              <th data-i18n="roi_col1">Metric / Capability</th>
-              <th data-i18n="roi_col2">Manual Engineering</th>
-              <th data-i18n="roi_col3">Antibody with IBM Bob</th>
+              <th scope="col" data-i18n="roi_col1">Metric / Capability</th>
+              <th scope="col" data-i18n="roi_col2">Manual Engineering</th>
+              <th scope="col" data-i18n="roi_col3">Antibody with IBM Bob</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td data-i18n="roi_row1">Time to Hunt Repository Twins</td>
+              <th scope="row" data-i18n="roi_row1">Time to Hunt Repository Twins</th>
               <td data-i18n="roi_row1_val1">90 minutes (ad-hoc grep)</td>
               <td data-i18n="roi_row1_val2">10 minutes (automated)</td>
             </tr>
             <tr>
-              <td data-i18n="roi_row2">Twin Verification Rigor</td>
+              <th scope="row" data-i18n="roi_row2">Twin Verification Rigor</th>
               <td data-i18n="roi_row2_val1">Subjective human inspection</td>
               <td data-i18n="roi_row2_val2">100% Failing Pytest Proof</td>
             </tr>
             <tr>
-              <td data-i18n="roi_row3">Adversarial Stress Testing</td>
+              <th scope="row" data-i18n="roi_row3">Adversarial Stress Testing</th>
               <td data-i18n="roi_row3_val1">None (defenses stay brittle)</td>
               <td data-i18n="roi_row3_val2">Multi-round Red-Team Mutation</td>
             </tr>
             <tr>
-              <td data-i18n="roi_row4">Final Immunity Score</td>
+              <th scope="row" data-i18n="roi_row4">Final Immunity Score</th>
               <td data-i18n="roi_row4_val1">17% (baseline only)</td>
               <td data-i18n="roi_row4_val2">100% (proven in worktree)</td>
             </tr>
@@ -815,131 +831,113 @@ Consider refactoring billing/reports/monthly.py."</span>
     </div>
   </section>
 
-  <!-- Feature 4: "Try Bob Live" Interactive Sandbox Terminal -->
-  <section id="sandbox" class="sandbox-section">
-    <div class="container sandbox-container">
-      <div class="section-badge-header">
-        <span class="badge-tag" data-i18n="sandbox_tag">Live Interactive Terminal</span>
+  <!-- ============ SANDBOX ============ -->
+  <section id="sandbox" class="sec sec-sandbox">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-label" data-i18n="sandbox_tag">Live Interactive Terminal</p>
         <h2 data-i18n="sandbox_title">Try Antibody CLI & Bob Mode Live</h2>
-        <p data-i18n="sandbox_desc">
+        <p class="sec-lede" data-i18n="sandbox_desc">
           Click any command chip below to execute realistic workflows with authentic CLI spinners, isolated worktrees, and pytest verdicts.
         </p>
-      </div>
+      </header>
 
-      <!-- Quick Action Command Chips -->
-      <div class="sandbox-chips-row">
-        <button class="terminal-chip active" data-cmd="init">
-          <span>⚡</span> <code>antibody init</code>
-        </button>
-        <button class="terminal-chip" data-cmd="new">
-          <span>🔍</span> <code>antibody new --commit a1b2c3d</code>
-        </button>
-        <button class="terminal-chip" data-cmd="prove">
-          <span>🔴</span> <code>antibody prove c01 --phase red</code>
-        </button>
-        <button class="terminal-chip" data-cmd="vaccine">
-          <span>💉</span> <code>antibody vaccine --round 2</code>
-        </button>
-        <button class="terminal-chip" data-cmd="scoreboard">
-          <span>📊</span> <code>antibody scoreboard</code>
-        </button>
-      </div>
-
-      <!-- Interactive Terminal Window -->
-      <div class="interactive-terminal">
-        <div class="terminal-header-bar">
-          <div class="window-dots"><span></span><span></span><span></span></div>
-          <span class="terminal-title-text">ibm-bob@workspace: ~/billing-service (antibody-env)</span>
-          <span style="font-size: 11px; font-family: var(--font-mono); color: #4ADE80;">● ONLINE</span>
+      <div class="term-shell">
+        <div class="sandbox-chips-row" role="group" aria-label="Commands">
+          <button class="terminal-chip active" data-cmd="init"><code>antibody init</code></button>
+          <button class="terminal-chip" data-cmd="new"><code>antibody new --commit a1b2c3d</code></button>
+          <button class="terminal-chip" data-cmd="prove"><code>antibody prove c01 --phase red</code></button>
+          <button class="terminal-chip" data-cmd="vaccine"><code>antibody vaccine --round 2</code></button>
+          <button class="terminal-chip" data-cmd="scoreboard"><code>antibody scoreboard</code></button>
         </div>
-        <div class="terminal-body" id="sandbox-terminal-output">
-          <div style="color: #8FA1A9; margin-bottom: 12px;"># Welcome to Antibody interactive sandbox. Click a command chip above or watch execution.</div>
-          <div><span style="color: #4ADE80;">developer@repo</span>:<span style="color: #60A5FA;">~/billing-service</span>$ <span id="terminal-typed-cmd" style="color: #FFFFFF; font-weight: 600;">antibody init</span><span class="terminal-cursor"></span></div>
-          <div id="terminal-cmd-result" style="margin-top: 10px;">
-            <div style="color: #93C5FD;">[antibody] Initializing repository immunity...</div>
-            <div style="color: #E2E8F0;">[antibody] Created .antibody/config.json (budget: 10 candidates, 6 variants, 3 vaccine rounds)</div>
-            <div style="color: #E2E8F0;">[antibody] Installed native Bob mode into .bob/custom_modes.yaml</div>
-            <div style="color: #E2E8F0;">[antibody] Registered slash command /antibody in .bob/commands/antibody.md</div>
-            <div style="color: #4ADE80; font-weight: 600; margin-top: 6px;">✓ Repository primed for IBM Bob 2.0 autonomous immune response.</div>
+
+        <div class="interactive-terminal">
+          <div class="terminal-header-bar">
+            <span class="terminal-title-text">ibm-bob@workspace: ~/billing-service (antibody-env)</span>
+            <span class="terminal-online">● ONLINE</span>
+          </div>
+          <div class="terminal-body" id="sandbox-terminal-output" aria-live="polite">
+            <div class="c-dim" style="margin-bottom: 12px;"># Welcome to Antibody interactive sandbox. Click a command chip above or watch execution.</div>
+            <div><span class="c-pass">developer@repo</span>:<span class="c-path">~/billing-service</span>$ <span id="terminal-typed-cmd" class="c-cmd">antibody init</span><span class="terminal-cursor"></span></div>
+            <div id="terminal-cmd-result" style="margin-top: 10px;">
+              <div style="color: #93C5FD;">[antibody] Initializing repository immunity...</div>
+              <div style="color: #E2E8F0;">[antibody] Created .antibody/config.json (budget: 10 candidates, 6 variants, 3 vaccine rounds)</div>
+              <div style="color: #E2E8F0;">[antibody] Installed native Bob mode into .bob/custom_modes.yaml</div>
+              <div style="color: #E2E8F0;">[antibody] Registered slash command /antibody in .bob/commands/antibody.md</div>
+              <div style="color: #4ADE80; font-weight: 700; margin-top: 6px;">✓ Repository primed for IBM Bob 2.0 autonomous immune response.</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Quickstart & CLI Reference -->
-  <section id="quickstart" class="quickstart-section">
-    <div class="container">
-      <div class="section-badge-header">
-        <span class="badge-tag" data-i18n="cli_tag">Developer Experience</span>
+  <!-- ============ QUICKSTART ============ -->
+  <section id="quickstart" class="sec sec-quick">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="sec-label" data-i18n="cli_tag">Developer Experience</p>
         <h2 data-i18n="cli_title">Simple CLI, Seamless Bob Mode</h2>
-        <p>Get up and running in under 60 seconds inside your repository.</p>
-      </div>
+        <p class="sec-lede">Get up and running in under 60 seconds inside your repository.</p>
+      </header>
 
-      <div class="cli-steps-grid">
-        <div class="cli-step-box">
-          <div class="step-badge" data-i18n="cli_step1_badge">Step 1</div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-badge" data-i18n="cli_step1_badge">Step 1</span>
           <h3 data-i18n="cli_step1_title">Initialize in Any Repository</h3>
           <div class="command-clip">
             <code>antibody init</code>
-            <button class="copy-btn" data-copy="antibody init" title="Copy command">📋</button>
+            <button class="copy-btn" data-copy="antibody init" title="Copy command" aria-label="Copy command: antibody init"><svg class="ico"><use href="#i-copy"/></svg></button>
           </div>
-          <p style="font-size: 13px; color: var(--ink-secondary); margin-top: 10px;">
-            Installs the custom Antibody mode into <code>.bob/</code> and sets up config budgets.
-          </p>
-        </div>
-
-        <div class="cli-step-box">
-          <div class="step-badge" data-i18n="cli_step2_badge">Step 2</div>
+          <p>Installs the custom Antibody mode into <code>.bob/</code> and sets up config budgets.</p>
+        </li>
+        <li class="step">
+          <span class="step-badge" data-i18n="cli_step2_badge">Step 2</span>
           <h3 data-i18n="cli_step2_title">Launch from Fix Commit in Bob IDE</h3>
           <div class="command-clip">
             <code>/antibody a1b2c3d</code>
-            <button class="copy-btn" data-copy="/antibody a1b2c3d" title="Copy command">📋</button>
+            <button class="copy-btn" data-copy="/antibody a1b2c3d" title="Copy command" aria-label="Copy command: /antibody a1b2c3d"><svg class="ico"><use href="#i-copy"/></svg></button>
           </div>
-          <p style="font-size: 13px; color: var(--ink-secondary); margin-top: 10px;">
-            Bob executes the 4 phases, pausing for your approval before touching code.
-          </p>
-        </div>
-
-        <div class="cli-step-box">
-          <div class="step-badge" data-i18n="cli_step3_badge">Step 3</div>
+          <p>Bob executes the 4 phases, pausing for your approval before touching code.</p>
+        </li>
+        <li class="step">
+          <span class="step-badge" data-i18n="cli_step3_badge">Step 3</span>
           <h3 data-i18n="cli_step3_title">Inspect Visual Scoreboard</h3>
           <div class="command-clip">
             <code>antibody scoreboard</code>
-            <button class="copy-btn" data-copy="antibody scoreboard" title="Copy command">📋</button>
+            <button class="copy-btn" data-copy="antibody scoreboard" title="Copy command" aria-label="Copy command: antibody scoreboard"><svg class="ico"><use href="#i-copy"/></svg></button>
           </div>
-          <p style="font-size: 13px; color: var(--ink-secondary); margin-top: 10px;">
-            Generates the visual report to verify immunity and review test proofs.
-          </p>
-        </div>
-      </div>
+          <p>Generates the visual report to verify immunity and review test proofs.</p>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <!-- Final Call to Action -->
-  <section class="cta-banner">
-    <div class="container">
-      <div class="cta-box">
-        <h2 data-i18n="cta_title">Stop paying for the same bugs twice.</h2>
-        <p data-i18n="cta_sub">Equip your repository with an autonomous immune system. Built for the IBM Bob 2.0 Hackathon.</p>
-        <div>
-          <a href="https://github.com/Rom4n10/ibmHackathon" target="_blank" class="btn-primary" data-i18n="cta_btn">
-            Get Started on GitHub ➔
-          </a>
-        </div>
-      </div>
+  <!-- ============ CTA ============ -->
+  <section class="cta">
+    <div class="wrap cta-inner">
+      <svg class="cta-cell" viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="1"/>
+        <circle cx="100" cy="100" r="64" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 6"/>
+      </svg>
+      <h2 data-i18n="cta_title">Stop paying for the same bugs twice.</h2>
+      <p data-i18n="cta_sub">Equip your repository with an autonomous immune system. Built for the IBM Bob 2.0 Hackathon.</p>
+      <a href="https://github.com/Rom4n10/ibmHackathon" target="_blank" rel="noopener" class="btn btn-accent btn-lg magnetic">
+        <span data-i18n="cta_btn">Get Started on GitHub</span>
+        <svg class="ico"><use href="#i-arrow"/></svg>
+      </a>
     </div>
   </section>
+  </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-content">
+  <footer class="foot">
+    <div class="wrap foot-row">
       <div>
-        <div style="font-weight: 700; color: var(--ink-primary); margin-bottom: 4px;">🧬 ANTIBODY</div>
+        <div class="foot-brand">antibody</div>
         <p data-i18n="footer_built">Built for the IBM Bob 2.0 Hackathon (September 2026, lablab.ai).</p>
       </div>
-      <ul class="footer-links">
-        <li><a href="https://github.com/Rom4n10/ibmHackathon" target="_blank">Repository</a></li>
+      <ul class="foot-links">
+        <li><a href="https://github.com/Rom4n10/ibmHackathon" target="_blank" rel="noopener">Repository</a></li>
         <li><a href="#lab">Live Simulator</a></li>
         <li><a href="#proof">Proof vs Opinion</a></li>
         <li><span data-i18n="footer_mit">MIT License</span></li>

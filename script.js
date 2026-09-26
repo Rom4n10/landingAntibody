@@ -328,8 +328,12 @@ const I18N = {
     badge_hackathon: "IBM Bob 2.0 Hackathon · September 2026",
     hero_headline: "Your team already paid for every bug. Antibody makes sure you never pay twice.",
     hero_sub: "When a developer fixes a bug, they fix only one copy. Antibody uses IBM Bob 2.0 to hunt the mistake's semantic twins across your repository, proves each one with a failing pytest, and lets autonomous red-team subagents attack custom Semgrep defenses until repository immunity hits 100%.",
-    btn_try_sim: "⚡ Run Live Immune Simulation",
-    btn_view_docs: "📖 View Architecture & Contracts",
+    hero_headline_a: "Your team already paid for every bug.",
+    hero_headline_b_pre: "Antibody makes sure you",
+    hero_headline_b_em: "never pay twice",
+    hero_lens_hint: "Move the lens over billing/ — grep sees identical lines, Bob sees twins.",
+    btn_try_sim: "Run Live Immune Simulation",
+    btn_view_docs: "View Architecture & Contracts",
     trust_proof: "100% Deterministic Proofs",
     trust_proof_sub: "pytest exit code 1 → 0",
     trust_zero_hallucination: "Zero Code Hallucinations",
@@ -353,8 +357,8 @@ const I18N = {
     plate_title: "Variant Attack Wells",
     legend_detected: "Neutralized (Crystal Violet)",
     legend_escaped: "Escaped Variant (Amber)",
-    btn_sim_play: "▶ Auto-Simulate Response",
-    btn_sim_step: "Next Phase ➔",
+    btn_sim_play: "Auto-Simulate Response",
+    btn_sim_step: "Next Phase",
     tab_diagnosis: "Infection Diagnosis",
     tab_twins: "Semantic Twins (Red/Green)",
     tab_variants: "Adversarial Red-Team",
@@ -386,6 +390,27 @@ const I18N = {
     phase_card4_title: "4. Memory",
     phase_card4_who: "Who: GitOps in .antibody/ directory",
     phase_card4_desc: "The hardened rule message preserves the incident context and fix link for future developers. Everything lives in git; no external database or server needed.",
+    adv_tag: "Adversarial Self-Training",
+    adv_title: "Red Team vs. Blue Team",
+    adv_sub: "How Antibody attacks itself until it reaches 100% immunity.",
+    adv_intro: "Most tools write a static linter rule and “pray” it works. Antibody uses adversarial game dynamics (self-play), splitting IBM Bob into two autonomous agents that compete against each other blind:",
+    adv_red_role: "Attacker subagent",
+    adv_red_title: "The Red Team",
+    adv_red_p1: "An isolated subagent that never has access to the defense rule.",
+    adv_red_p2: "Its only mission is to act like a malicious attacker or a careless developer: it invents tricky mutations of the bug to fool the system — changing operators, using aliases like utcnow(), flipping operands, or hiding the error in helper variables 15 lines later.",
+    adv_blue_role: "Bob, the defender",
+    adv_blue_title: "The Blue Team",
+    adv_blue_p1: "The agent in charge of writing the permanent protection rule in Semgrep.",
+    adv_blue_p2: "It doesn't see the attacks in advance either: it must design a robust semantic pattern based purely on the root cause of the problem.",
+    adv_blind_label: "Blind to",
+    adv_arena_title: "The battle in an isolated git worktree",
+    adv_arena_1: "The Antibody CLI applies each mutated attack in a temporary, isolated environment — never touching your working code.",
+    adv_arena_2: "It runs Semgrep and the real tests. If a variant slips through unnoticed, it's marked as “Escaped” (Amber alert).",
+    adv_arena_3: "With that evidence, Bob analyzes where the bug leaked and hardens the rule round after round (Round 0 → Round 1 → Round 2), until 100% of variants are neutralized and stained Crystal Violet.",
+    adv_r0: "Round 0",
+    adv_r1: "Round 1",
+    adv_r2: "Round 2",
+    adv_result: "The result: a defense that wasn't validated by human opinions, but forged under fire against real adversarial mutations.",
     proof_tag: "Anti-Hallucination Philosophy",
     proof_title: "Proof Over Opinion",
     proof_sub: "Antibody refuses to make claims it cannot demonstrate with real compiler or pytest execution.",
@@ -435,7 +460,7 @@ const I18N = {
     cli_step3_title: "Inspect Visual Scoreboard",
     cta_title: "Stop paying for the same bugs twice.",
     cta_sub: "Equip your repository with an autonomous immune system. Built for the IBM Bob 2.0 Hackathon.",
-    cta_btn: "Get Started on GitHub ➔",
+    cta_btn: "Get Started on GitHub",
     footer_built: "Built for the IBM Bob 2.0 Hackathon (September 2026, lablab.ai).",
     footer_mit: "Released under MIT Open Source License.",
     nav_repomap: "Immune Map",
@@ -480,8 +505,12 @@ const I18N = {
     badge_hackathon: "IBM Bob 2.0 Hackathon · Septiembre 2026",
     hero_headline: "Tu equipo ya pagó por cada bug. Antibody asegura que nunca pagues dos veces.",
     hero_sub: "Cuando un programador arregla un bug, sólo arregla una copia. Antibody usa IBM Bob 2.0 para cazar los 'gemelos' semánticos en todo el repositorio, prueba cada uno con un test que falla en pytest, y activa subagentes de equipo rojo que atacan reglas Semgrep hasta alcanzar 100% de inmunidad.",
-    btn_try_sim: "⚡ Probar Simulación Inmune en Vivo",
-    btn_view_docs: "📖 Ver Arquitectura y Contratos",
+    hero_headline_a: "Tu equipo ya pagó por cada bug.",
+    hero_headline_b_pre: "Antibody asegura que",
+    hero_headline_b_em: "nunca pagues dos veces",
+    hero_lens_hint: "Mové la lente sobre billing/ — grep ve líneas idénticas, Bob ve gemelos.",
+    btn_try_sim: "Probar Simulación Inmune en Vivo",
+    btn_view_docs: "Ver Arquitectura y Contratos",
     trust_proof: "100% Pruebas Deterministas",
     trust_proof_sub: "pytest exit code 1 → 0",
     trust_zero_hallucination: "Cero Alucinaciones de Código",
@@ -505,8 +534,8 @@ const I18N = {
     plate_title: "Pozos de Ataque de Variantes",
     legend_detected: "Neutralizado (Violeta Cristal)",
     legend_escaped: "Variante Escapada (Ámbar)",
-    btn_sim_play: "▶ Auto-Simular Respuesta",
-    btn_sim_step: "Siguiente Fase ➔",
+    btn_sim_play: "Auto-Simular Respuesta",
+    btn_sim_step: "Siguiente Fase",
     tab_diagnosis: "Diagnóstico de Infección",
     tab_twins: "Gemelos Semánticos (Red/Green)",
     tab_variants: "Equipo Rojo Adversario",
@@ -538,6 +567,27 @@ const I18N = {
     phase_card4_title: "4. Memoria",
     phase_card4_who: "Quién: GitOps en directorio .antibody/",
     phase_card4_desc: "El mensaje de la regla conserva el contexto del incidente y el link al fix para futuros desarrolladores. Todo vive en git; sin bases de datos externas.",
+    adv_tag: "Auto-Entrenamiento Adversarial",
+    adv_title: "Red Team vs. Blue Team",
+    adv_sub: "Cómo Antibody se auto-ataca a sí mismo hasta alcanzar el 100% de inmunidad.",
+    adv_intro: "La mayoría de las herramientas escriben una regla de linter estática y “rezan” para que funcione. Antibody utiliza una dinámica de juego adversarial (self-play) dividiendo a IBM Bob en dos agentes autónomos que compiten entre sí a ciegas:",
+    adv_red_role: "Subagente Atacante",
+    adv_red_title: "El Equipo Rojo",
+    adv_red_p1: "Es un subagente aislado que jamás tiene acceso a la regla de defensa.",
+    adv_red_p2: "Su única misión es actuar como un atacante malicioso o un desarrollador descuidado: inventa mutaciones tramposas del bug para intentar engañar al sistema (cambia operadores, usa alias como utcnow(), invierte operandos o esconde el error en variables auxiliares 15 líneas después).",
+    adv_blue_role: "Bob Defensor",
+    adv_blue_title: "El Equipo Azul",
+    adv_blue_p1: "Es el agente encargado de redactar la regla de protección permanente en Semgrep.",
+    adv_blue_p2: "Tampoco ve los ataques de antemano: debe diseñar un patrón semántico robusto basado puramente en la causa raíz del problema.",
+    adv_blind_label: "A ciegas de",
+    adv_arena_title: "La batalla en un git worktree aislado",
+    adv_arena_1: "La CLI de Antibody aplica cada ataque mutado en un entorno temporal aislado (sin tocar jamás tu código de trabajo).",
+    adv_arena_2: "Corre Semgrep y los tests reales. Si una variante pasa desapercibida, se marca como “Escapada” (Alerta Ámbar).",
+    adv_arena_3: "Con esa evidencia, Bob analiza por dónde se filtró el bug y refuerza la regla ronda tras ronda (Ronda 0 → Ronda 1 → Ronda 2), hasta que el 100% de las variantes son neutralizadas y teñidas en Violeta Cristal.",
+    adv_r0: "Ronda 0",
+    adv_r1: "Ronda 1",
+    adv_r2: "Ronda 2",
+    adv_result: "El resultado: una defensa que no fue probada por opiniones humanas, sino forjada bajo fuego contra mutaciones adversariales reales.",
     proof_tag: "Filosofía Anti-Alucinación",
     proof_title: "Prueba por Encima de Opinión",
     proof_sub: "Antibody se niega a emitir diagnósticos que no pueda demostrar con la ejecución real de un compilador o suite de tests.",
@@ -587,7 +637,7 @@ const I18N = {
     cli_step3_title: "Inspeccionar Marcador Visual",
     cta_title: "Dejá de pagar por los mismos bugs dos veces.",
     cta_sub: "Dotá a tu repositorio de un sistema inmune autónomo. Construido para la Hackathon IBM Bob 2.0.",
-    cta_btn: "Comenzar en GitHub ➔",
+    cta_btn: "Comenzar en GitHub",
     footer_built: "Construido para la Hackathon IBM Bob 2.0 (Septiembre 2026, lablab.ai).",
     footer_mit: "Distribuido bajo Licencia Abierta MIT.",
     nav_repomap: "Mapa Inmune",
@@ -649,8 +699,7 @@ const themeToggleBtn = document.getElementById("theme-toggle-btn");
 // --- Initialization ---
 document.addEventListener("DOMContentLoaded", () => {
   // Theme check
-  const savedTheme = localStorage.getItem("antibody_theme") || "light";
-  document.documentElement.setAttribute("data-theme", savedTheme);
+  const savedTheme = document.documentElement.getAttribute("data-theme") || "light";
   updateThemeIcon(savedTheme);
 
   // Setup Event Listeners
@@ -667,6 +716,11 @@ document.addEventListener("DOMContentLoaded", () => {
   initMicroscope();
   initRoiCalculator();
   initSandboxTerminal();
+
+  // Presentation layer
+  initHeroLens();
+  initSectionReveal();
+  initMagnetic();
 });
 
 function setupEventListeners() {
@@ -674,6 +728,7 @@ function setupEventListeners() {
   langToggleBtn.addEventListener("click", () => {
     currentLang = currentLang === "en" ? "es" : "en";
     langToggleBtn.querySelector(".lang-text").textContent = currentLang.toUpperCase();
+    document.documentElement.lang = currentLang;
     applyLanguage(currentLang);
     renderSpecimen();
     renderInspectorTab("diagnosis");
@@ -685,7 +740,7 @@ function setupEventListeners() {
     const curTheme = document.documentElement.getAttribute("data-theme") || "light";
     const nextTheme = curTheme === "light" ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", nextTheme);
-    localStorage.setItem("antibody_theme", nextTheme);
+    try { localStorage.setItem("antibody_theme", nextTheme); } catch (e) {}
     updateThemeIcon(nextTheme);
   });
 
@@ -765,14 +820,7 @@ function setupEventListeners() {
 }
 
 function updateThemeIcon(theme) {
-  const iconSpan = themeToggleBtn.querySelector(".theme-icon");
-  if (theme === "dark") {
-    iconSpan.textContent = "🌙";
-    themeToggleBtn.setAttribute("aria-label", "Switch to clinical light theme");
-  } else {
-    iconSpan.textContent = "☀️";
-    themeToggleBtn.setAttribute("aria-label", "Switch to deep bio dark theme");
-  }
+  themeToggleBtn.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
 }
 
 function applyLanguage(lang) {
@@ -783,6 +831,9 @@ function applyLanguage(lang) {
       el.textContent = dict[key];
     }
   });
+  if (isSimulating) {
+    simPlayBtn.querySelector(".sim-label").textContent = lang === "es" ? "Pausar Simulación" : "Pause Simulation";
+  }
 }
 
 function renderSpecimen() {
@@ -862,10 +913,12 @@ function toggleSimulation() {
   if (isSimulating) {
     clearInterval(simInterval);
     isSimulating = false;
-    simPlayBtn.innerHTML = `<span>▶</span> <span>${currentLang === 'es' ? 'Auto-Simular Respuesta' : 'Auto-Simulate Response'}</span>`;
+    simPlayBtn.classList.remove("is-playing");
+    simPlayBtn.querySelector(".sim-label").textContent = I18N[currentLang].btn_sim_play;
   } else {
     isSimulating = true;
-    simPlayBtn.innerHTML = `<span>⏸</span> <span>${currentLang === 'es' ? 'Pausar Simulación' : 'Pause Simulation'}</span>`;
+    simPlayBtn.classList.add("is-playing");
+    simPlayBtn.querySelector(".sim-label").textContent = currentLang === 'es' ? 'Pausar Simulación' : 'Pause Simulation';
     simInterval = setInterval(() => {
       stepSimulation();
     }, 2400);
@@ -903,7 +956,7 @@ function renderInspectorTab(tabKey) {
     case "diagnosis":
       inspectorContent.innerHTML = `
         <div class="diagnosis-banner">
-          <div class="diag-title" id="diag-banner-title">🔬 ${isEs ? specimen.title_es : specimen.title_en}</div>
+          <div class="diag-title" id="diag-banner-title">${isEs ? specimen.title_es : specimen.title_en}</div>
           <div class="diag-desc" id="diag-banner-pattern">${isEs ? specimen.root_cause_es : specimen.root_cause_en}</div>
         </div>
         
@@ -1233,7 +1286,7 @@ function initMicroscope() {
 
       codeBlock.innerHTML = `<span class="hl-keyword">def</span> <span class="hl-func">check_renewal</span>(sub):
     <span class="hl-comment"># Grep matches text token 'datetime.now()'</span>
-    <span style="background: rgba(245, 158, 11, 0.18); display: block; margin: 0 -16px; padding: 0 16px;">    <span class="hl-keyword">if</span> sub.renews_at &lt; <span style="color: #FBBF24; text-decoration: underline;">datetime.now()</span>:</span>
+    <span style="background: rgba(245, 158, 11, 0.18); display: inline-block; min-width: calc(100% + 32px); margin: 0 -16px; padding: 0 16px;">    <span class="hl-keyword">if</span> sub.renews_at &lt; <span style="color: #FBBF24; text-decoration: underline;">datetime.now()</span>:</span>
         sub.trigger_billing_cycle()
         <span class="hl-keyword">return</span> <span class="hl-string">"renewed"</span>`;
 
@@ -1241,8 +1294,7 @@ function initMicroscope() {
         ? `<b>Falla de Grep:</b> Grep sólo sabe comparar cadenas literales. Desconoce si <code>sub.renews_at</code> viene de PostgreSQL como datetime con o sin zona horaria. Si un programador escribe <code>sub.renews_at - now()</code> o usa <code>utcnow()</code>, grep devuelve <b>0 resultados</b> y el bug revienta en producción.`
         : `<b>Why Text Grep Fails:</b> Grep only matches exact token strings. It cannot inspect whether <code>sub.renews_at</code> carries timezone metadata from the database driver. When mutated to <code>sub.renews_at - now()</code> or <code>utcnow()</code>, grep returns <b>zero hits</b> and the regression crashes production.`;
 
-      diagram.innerHTML = `
-<span class="hl-comment"># Flat Token Stream (Zero Context)</span>
+      diagram.innerHTML = `<span class="hl-comment"># Flat Token Stream (Zero Context)</span>
 [TOKEN: "if"] ──► [TOKEN: "sub.renews_at"] ──► [TOKEN: "&lt;"] ──► [TOKEN: "datetime.now()"]
 <span style="color: #F87171;">[!] Type Invariant: UNKNOWN</span>
 <span style="color: #F87171;">[!] Semantic Context: NONE</span>
@@ -1255,7 +1307,7 @@ function initMicroscope() {
 
       codeBlock.innerHTML = `<span class="hl-keyword">def</span> <span class="hl-func">check_renewal</span>(sub):
     <span class="hl-comment"># Bob AST Analyzer tracks dataflow taint</span>
-    <span style="background: rgba(122, 46, 142, 0.22); display: block; margin: 0 -16px; padding: 0 16px;">    <span class="hl-keyword">if</span> <span style="color: #4ADE80; font-weight: 700;">sub.renews_at</span> <span class="hl-keyword">&lt;</span> <span style="color: #F87171; font-weight: 700;">datetime.now()</span>:</span>
+    <span style="background: rgba(122, 46, 142, 0.22); display: inline-block; min-width: calc(100% + 32px); margin: 0 -16px; padding: 0 16px;">    <span class="hl-keyword">if</span> <span style="color: #4ADE80; font-weight: 700;">sub.renews_at</span> <span class="hl-keyword">&lt;</span> <span style="color: #F87171; font-weight: 700;">datetime.now()</span>:</span>
         sub.trigger_billing_cycle()
         <span class="hl-keyword">return</span> <span class="hl-string">"renewed"</span>`;
 
@@ -1263,8 +1315,7 @@ function initMicroscope() {
         ? `<b>Inmunidad Semántica de Bob:</b> El analizador AST de Bob navega el árbol sintáctico. Reconoce que <code>renews_at</code> es un objeto <code>Datetime(tz=UTC)</code> consciente, mientras que <code>now()</code> es naive. Inyecta la regla Semgrep que previene cualquier combinación de estos operandos en todo el repo.`
         : `<b>Bob Semantic Immunity:</b> Bob’s AST engine builds a typed dependency graph. It detects that <code>renews_at</code> evaluates to an aware <code>Datetime(tz=UTC)</code>, whereas <code>now()</code> is naive. It crafts a Semgrep pattern that neutralizes any arithmetic or comparison between them across all files.`;
 
-      diagram.innerHTML = `
-<span class="hl-keyword">[Compare: BinaryOp (&lt;)]</span>
+      diagram.innerHTML = `<span class="hl-keyword">[Compare: BinaryOp (&lt;)]</span>
 ├── Left:  <span class="ast-aware">[Attribute: sub.renews_at]</span>  ──► Type: Datetime(tz=UTC) <span style="color: #4ADE80;">[AWARE]</span>
 └── Right: <span class="ast-naive">[Call: datetime.now()]</span>      ──► Type: Datetime(tz=None) <span style="color: #F87171;">[NAIVE]</span>
 <span class="ast-callout">⚠️ TypeError: can't compare offset-naive and offset-aware datetimes</span>
@@ -1300,6 +1351,11 @@ function initRoiCalculator() {
     const team = parseInt(teamInput.value, 10);
     const bugs = parseInt(bugsInput.value, 10);
     const rate = parseInt(rateInput.value, 10);
+
+    [teamInput, bugsInput, rateInput].forEach(el => {
+      const pct = ((el.value - el.min) / (el.max - el.min)) * 100;
+      el.style.setProperty("--p", pct + "%");
+    });
 
     teamDisplay.textContent = `${team} devs`;
     bugsDisplay.textContent = `${bugs} fixes`;
@@ -1416,5 +1472,127 @@ function initSandboxTerminal() {
         }
       }, 25);
     });
+  });
+}
+
+// ==========================================================================
+// PRESENTATION: HERO MICROSCOPE LENS
+// A stained copy of the repository sits under the dark slide; the lens
+// reveals it. Outside the lens every line looks alike (what grep sees);
+// inside it, semantic twins take the crystal-violet stain.
+// ==========================================================================
+function initHeroLens() {
+  const frame = document.querySelector("#hero-slide .slide-frame");
+  const baseCode = document.getElementById("slide-code");
+  const stainLayer = frame && frame.querySelector(".slide-stain");
+  const readout = document.getElementById("lens-readout");
+  if (!frame || !baseCode || !stainLayer) return;
+
+  const stainCode = baseCode.cloneNode(true);
+  stainCode.removeAttribute("id");
+  stainLayer.appendChild(stainCode);
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const twinLines = Array.from(stainCode.querySelectorAll("[data-twin]"));
+  let w = 0, h = 0, r = 110, lines = [];
+  let x = 0, y = 0, tx = 0, ty = 0;
+  let pointerActive = false, visible = true, raf = 0, lastLabel = "";
+  const t0 = performance.now();
+
+  function measure() {
+    const box = frame.getBoundingClientRect();
+    w = box.width; h = box.height;
+    r = Math.max(64, Math.min(130, Math.min(w, h) * 0.24));
+    frame.style.setProperty("--r", r + "px");
+    lines = twinLines.map(el => {
+      const b = el.getBoundingClientRect();
+      return { y: b.top - box.top + b.height / 2, label: el.dataset.twin };
+    });
+  }
+
+  function idleTarget(now) {
+    if (reduceMotion) {
+      const first = lines[0];
+      return [w * 0.42, first ? first.y : h * 0.4];
+    }
+    const t = (now - t0) / 1000;
+    return [w * (0.5 + 0.3 * Math.sin(t * 0.42)), h * (0.5 + 0.34 * Math.sin(t * 0.67 + 1.2))];
+  }
+
+  function paint() {
+    frame.style.setProperty("--x", x.toFixed(1) + "px");
+    frame.style.setProperty("--y", y.toFixed(1) + "px");
+    let label = "—";
+    let best = r * 0.55;
+    lines.forEach(l => {
+      const d = Math.abs(l.y - y);
+      if (d < best) { best = d; label = l.label; }
+    });
+    if (label !== lastLabel && readout) { readout.textContent = label; lastLabel = label; }
+  }
+
+  function tick(now) {
+    if (!pointerActive) [tx, ty] = idleTarget(now);
+    const k = reduceMotion ? 1 : 0.12;
+    x += (tx - x) * k;
+    y += (ty - y) * k;
+    paint();
+    raf = visible ? requestAnimationFrame(tick) : 0;
+  }
+
+  function onPointer(e) {
+    const box = frame.getBoundingClientRect();
+    pointerActive = true;
+    tx = Math.max(0, Math.min(w, e.clientX - box.left));
+    ty = Math.max(0, Math.min(h, e.clientY - box.top));
+  }
+
+  frame.addEventListener("pointermove", onPointer);
+  frame.addEventListener("pointerdown", onPointer);
+  frame.addEventListener("pointerleave", () => { pointerActive = false; });
+  window.addEventListener("resize", measure);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+
+  new IntersectionObserver(entries => {
+    visible = entries[0].isIntersecting;
+    if (visible && !raf) raf = requestAnimationFrame(tick);
+  }).observe(frame);
+
+  measure();
+  [x, y] = idleTarget(performance.now());
+  tx = x; ty = y;
+  raf = requestAnimationFrame(tick);
+}
+
+// Section headers: the rule draws in, then the title rises through it.
+function initSectionReveal() {
+  const heads = document.querySelectorAll(".sec-head, .arena-track");
+  if (!("IntersectionObserver" in window)) {
+    heads.forEach(h => h.classList.add("is-in"));
+    return;
+  }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-in");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: "0px 0px -12% 0px" });
+  heads.forEach(h => io.observe(h));
+}
+
+// Primary CTAs lean toward the cursor (fine pointers only).
+function initMagnetic() {
+  if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  document.querySelectorAll(".magnetic").forEach(el => {
+    el.addEventListener("pointermove", e => {
+      const b = el.getBoundingClientRect();
+      const dx = e.clientX - (b.left + b.width / 2);
+      const dy = e.clientY - (b.top + b.height / 2);
+      el.style.transform = `translate(${dx * 0.18}px, ${dy * 0.28}px)`;
+    });
+    el.addEventListener("pointerleave", () => { el.style.transform = ""; });
   });
 }
