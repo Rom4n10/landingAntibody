@@ -323,7 +323,6 @@ const I18N = {
     nav_lab: "Live Lab Simulator",
     nav_proof: "Proof vs Opinion",
     nav_bob: "IBM Bob 2.0",
-    nav_roi: "ROI Impact",
     nav_cli: "CLI Quickstart",
     badge_hackathon: "IBM Bob 2.0 Hackathon · September 2026",
     hero_headline: "Your team already paid for every bug. Antibody makes sure you never pay twice.",
@@ -417,12 +416,6 @@ const I18N = {
     team_title: "Meet the Team Behind Antibody",
     team_desc: "Engineered with precision for the IBM Bob 2.0 Hackathon (September 2026, lablab.ai).",
     team_connect: "LinkedIn Profile ↗",
-    team_role_roman: "Full-Stack & Systems Architecture",
-    team_desc_roman: "Core architecture, deterministic evidence engine, and interactive laboratory interface.",
-    team_role_joaquin: "Autonomous Agents & Logic",
-    team_desc_joaquin: "IBM Bob 2.0 subagent orchestration, adversarial red-team mutations, and twin hunter pipelines.",
-    team_role_benjamin: "Systems & Verification",
-    team_desc_benjamin: "Git worktree sandbox isolation, AST parsing dissector, and deterministic pytest verification.",
     proof_tag: "Anti-Hallucination Philosophy",
     proof_title: "Proof Over Opinion",
     proof_sub: "Antibody refuses to make claims it cannot demonstrate with real compiler or pytest execution.",
@@ -445,23 +438,6 @@ const I18N = {
     gitops_tag: "Zero Infrastructure Overhead",
     gitops_title: "Pure GitOps: Everything Lives in Your Repository",
     gitops_desc: "No SaaS accounts. No third-party data transmission. No database to manage. All evidence, scores, and permanent rules are plain files checked into git and reviewed via standard Pull Requests.",
-    roi_tag: "Measured Hackathon Benchmark",
-    roi_title: "Proven Impact on Real Codebases",
-    roi_col1: "Metric / Capability",
-    roi_col2: "Manual Engineering",
-    roi_col3: "Antibody with IBM Bob",
-    roi_row1: "Time to Hunt Repository Twins",
-    roi_row1_val1: "90 minutes (ad-hoc grep)",
-    roi_row1_val2: "10 minutes (automated)",
-    roi_row2: "Twin Verification Rigor",
-    roi_row2_val1: "Subjective human inspection",
-    roi_row2_val2: "100% Failing Pytest Proof",
-    roi_row3: "Adversarial Stress Testing",
-    roi_row3_val1: "None (defenses stay brittle)",
-    roi_row3_val2: "Multi-round Red-Team Mutation",
-    roi_row4: "Final Immunity Score",
-    roi_row4_val1: "17% (baseline only)",
-    roi_row4_val2: "100% (proven in worktree)",
     cli_tag: "Developer Experience",
     cli_title: "Simple CLI, Seamless Bob Mode",
     cli_step1_badge: "Step 1",
@@ -489,19 +465,6 @@ const I18N = {
     microscope_desc: "Compare how standard text grep sees code vs. how IBM Bob's Abstract Syntax Tree (AST) engine uncovers fatal runtime type mismatches.",
     lens_grep: "Human / Grep View (Blind)",
     lens_ast: "Bob AST Semantic X-Ray (Immune)",
-    calc_heading: "Interactive Cost Calculator",
-    calc_sub: "Adjust parameters to simulate your team's duplicate bug elimination savings.",
-    slider_team_title: "Engineering Team Size:",
-    slider_bugs_title: "Critical Bug Fixes / Month:",
-    slider_rate_title: "Blended Dev Rate ($ USD / hr):",
-    calc_out_money_label: "Annual Engineering Cost Saved",
-    calc_out_money_desc: "Based on eliminating duplicate diagnosis and repeated emergency fixes.",
-    calc_out_hours_label: "Duplicate Triage Hours Saved",
-    calc_out_hours_desc: "Developer hours reclaimed from manual grep and postmortem re-investigation.",
-    calc_out_regressions_label: "Silent Twin Bugs Neutralized",
-    calc_out_regressions_desc: "Identical semantic errors killed before ever reaching production.",
-    calc_out_token_label: "Bob Subagent Efficiency",
-    calc_out_token_desc: "Zero tokens burned re-running hallucinated advice. Proof recorded by CLI.",
     sandbox_tag: "Live Interactive Terminal",
     sandbox_title: "Try Antibody CLI & Bob Mode Live",
     sandbox_desc: "Click any command chip below to execute realistic workflows with authentic CLI spinners, isolated worktrees, and pytest verdicts."
@@ -512,7 +475,6 @@ const I18N = {
     nav_lab: "Simulador de Laboratorio",
     nav_proof: "Prueba vs Opinión",
     nav_bob: "IBM Bob 2.0",
-    nav_roi: "Impacto y ROI",
     nav_cli: "Guía Rápida CLI",
     badge_hackathon: "IBM Bob 2.0 Hackathon · Septiembre 2026",
     hero_headline: "Tu equipo ya pagó por cada bug. Antibody asegura que nunca pagues dos veces.",
@@ -606,12 +568,6 @@ const I18N = {
     team_title: "Conoce al Equipo Detrás de Antibody",
     team_desc: "Diseñado con precisión para la Hackathon IBM Bob 2.0 (Septiembre 2026, lablab.ai).",
     team_connect: "Perfil de LinkedIn ↗",
-    team_role_roman: "Full-Stack y Arquitectura de Sistemas",
-    team_desc_roman: "Arquitectura central, motor de evidencia determinista e interfaz interactiva del laboratorio.",
-    team_role_joaquin: "Agentes Autónomos y Lógica",
-    team_desc_joaquin: "Orquestación de subagentes de IBM Bob 2.0, mutaciones de equipo rojo y pipelines de gemelos.",
-    team_role_benjamin: "Sistemas y Verificación",
-    team_desc_benjamin: "Aislamiento en sandbox de git worktree, disector AST y verificación determinista en pytest.",
     proof_tag: "Filosofía Anti-Alucinación",
     proof_title: "Prueba por Encima de Opinión",
     proof_sub: "Antibody se niega a emitir diagnósticos que no pueda demostrar con la ejecución real de un compilador o suite de tests.",
@@ -634,23 +590,6 @@ const I18N = {
     gitops_tag: "Cero Sobrecarga de Infraestructura",
     gitops_title: "GitOps Puro: Todo Vive Dentro de Tu Repositorio",
     gitops_desc: "Sin cuentas SaaS. Sin transmisión de datos a terceros. Sin bases de datos para mantener. Toda la evidencia, puntuaciones y reglas permanentes son archivos planos en git revisados por Pull Requests.",
-    roi_tag: "Benchmark Medido en la Hackathon",
-    roi_title: "Impacto Demostrado en Código Real",
-    roi_col1: "Métrica / Capacidad",
-    roi_col2: "Ingeniería Manual",
-    roi_col3: "Antibody con IBM Bob",
-    roi_row1: "Tiempo para cazar gemelos en el repo",
-    roi_row1_val1: "90 minutos (grep manual)",
-    roi_row1_val2: "10 minutos (automatizado)",
-    roi_row2: "Rigor de Verificación de Gemelos",
-    roi_row2_val1: "Inspección humana subjetiva",
-    roi_row2_val2: "100% Demostrado con Pytest",
-    roi_row3: "Pruebas de Estrés Adversariales",
-    roi_row3_val1: "Ninguna (defensas frágiles)",
-    roi_row3_val2: "Mutación por Equipo Rojo",
-    roi_row4: "Puntuación Final de Inmunidad",
-    roi_row4_val1: "17% (solo base)",
-    roi_row4_val2: "100% (probado en worktree)",
     cli_tag: "Experiencia para Desarrolladores",
     cli_title: "CLI Sencillo, Modo Bob Integrado",
     cli_step1_badge: "Paso 1",
@@ -678,19 +617,6 @@ const I18N = {
     microscope_desc: "Compara cómo un grep de texto plano ve el código frente al motor de árbol sintáctico (AST) de Bob que revela incompatibilidades de tipos fatales.",
     lens_grep: "Vista Humano / Grep (Ciega)",
     lens_ast: "Rayos X Semánticos AST de Bob (Inmune)",
-    calc_heading: "Calculadora Interactiva de Costos",
-    calc_sub: "Ajusta las variables para simular el ahorro por eliminación de bugs repetidos.",
-    slider_team_title: "Tamaño del Equipo de Ingeniería:",
-    slider_bugs_title: "Fixes de Bugs Críticos / Mes:",
-    slider_rate_title: "Tarifa Promedio Dev ($ USD / hr):",
-    calc_out_money_label: "Costo Anual de Ingeniería Ahorrado",
-    calc_out_money_desc: "Basado en eliminar diagnósticos duplicados y fixes de emergencia repetidos.",
-    calc_out_hours_label: "Horas de Triage Repetido Ahorradas",
-    calc_out_hours_desc: "Horas recuperadas de búsquedas grep manuales y re-investigación de postmortems.",
-    calc_out_regressions_label: "Bugs Gemelos Silenciosos Neutralizados",
-    calc_out_regressions_desc: "Errores semánticos idénticos eliminados antes de llegar a producción.",
-    calc_out_token_label: "Eficiencia de Subagentes de Bob",
-    calc_out_token_desc: "Cero tokens desperdiciados en consejos alucinados. Evidencia registrada por CLI.",
     sandbox_tag: "Terminal Interactiva en Vivo",
     sandbox_title: "Probá Antibody CLI y Modo Bob en Vivo",
     sandbox_desc: "Hacé clic en cualquier comando abajo para ver flujos reales con spinners, worktrees aislados y veredictos de pytest."
@@ -738,7 +664,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize the 4 WOW Features
   initRepoMap();
   initMicroscope();
-  initRoiCalculator();
   initSandboxTerminal();
 
   // Presentation layer
@@ -1352,55 +1277,6 @@ function initMicroscope() {
   btnAst.addEventListener("click", () => setMode("ast"));
   window.updateMicroscopeLanguage = () => setMode(currentMode);
   setMode("ast");
-}
-
-// ==========================================================================
-// FEATURE 3: FINANCIAL & ENGINEERING ROI CALCULATOR
-// ==========================================================================
-function initRoiCalculator() {
-  const teamInput = document.getElementById("input-team-size");
-  const bugsInput = document.getElementById("input-bugs-month");
-  const rateInput = document.getElementById("input-dev-rate");
-
-  const teamDisplay = document.getElementById("val-team-size");
-  const bugsDisplay = document.getElementById("val-bugs-month");
-  const rateDisplay = document.getElementById("val-dev-rate");
-
-  const outMoney = document.getElementById("out-money-saved");
-  const outHours = document.getElementById("out-hours-saved");
-  const outRegressions = document.getElementById("out-regressions-stopped");
-
-  if (!teamInput || !bugsInput || !rateInput) return;
-
-  function recalculate() {
-    const team = parseInt(teamInput.value, 10);
-    const bugs = parseInt(bugsInput.value, 10);
-    const rate = parseInt(rateInput.value, 10);
-
-    [teamInput, bugsInput, rateInput].forEach(el => {
-      const pct = ((el.value - el.min) / (el.max - el.min)) * 100;
-      el.style.setProperty("--p", pct + "%");
-    });
-
-    teamDisplay.textContent = `${team} devs`;
-    bugsDisplay.textContent = `${bugs} fixes`;
-    rateDisplay.textContent = `$${rate} / hr`;
-
-    const annualBugs = bugs * 12;
-    const annualTwins = Math.max(1, Math.round(annualBugs * 0.25));
-    const hoursSaved = annualTwins * 24;
-    const moneySaved = hoursSaved * rate;
-    const outagesStopped = Math.max(1, Math.round(annualTwins * 0.75));
-
-    outMoney.textContent = `$${moneySaved.toLocaleString()}`;
-    outHours.textContent = `${hoursSaved.toLocaleString()} hrs`;
-    outRegressions.textContent = `${outagesStopped} bugs`;
-  }
-
-  teamInput.addEventListener("input", recalculate);
-  bugsInput.addEventListener("input", recalculate);
-  rateInput.addEventListener("input", recalculate);
-  recalculate();
 }
 
 // ==========================================================================

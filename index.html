@@ -51,7 +51,6 @@
         <a href="#microscope" data-i18n="nav_microscope">AST Microscope</a>
         <a href="#phases" data-i18n="nav_architecture">4-Phase Loop</a>
         <a href="#proof" data-i18n="nav_proof">Proof vs Opinion</a>
-        <a href="#roi-calc" data-i18n="nav_roi">ROI Calculator</a>
         <a href="#sandbox" data-i18n="nav_sandbox">Live Terminal</a>
         <a href="#team" data-i18n="nav_team">Team</a>
       </nav>
@@ -77,7 +76,6 @@
             <a href="#microscope" data-i18n="nav_microscope">AST Microscope</a>
             <a href="#phases" data-i18n="nav_architecture">4-Phase Loop</a>
             <a href="#proof" data-i18n="nav_proof">Proof vs Opinion</a>
-            <a href="#roi-calc" data-i18n="nav_roi">ROI Calculator</a>
             <a href="#sandbox" data-i18n="nav_sandbox">Live Terminal</a>
             <a href="#team" data-i18n="nav_team">Team</a>
           </div>
@@ -733,107 +731,6 @@ Consider refactoring billing/reports/monthly.py."</span>
     </div>
   </section>
 
-  <!-- ============ ROI ============ -->
-  <section id="roi" class="sec sec-roi">
-    <div class="wrap">
-      <header class="sec-head">
-        <p class="sec-label" data-i18n="roi_tag">Measured Hackathon Benchmark</p>
-        <h2 data-i18n="roi_title">Proven Impact on Real Codebases</h2>
-        <p class="sec-lede">Empirical results measured during the IBM Bob 2.0 Hackathon demo benchmark.</p>
-      </header>
-
-      <div id="roi-calc" class="calc">
-        <div class="calc-inputs">
-          <div>
-            <h3 class="calc-title" data-i18n="calc_heading">Interactive Cost Calculator</h3>
-            <p class="calc-sub" data-i18n="calc_sub">Adjust parameters to simulate your team's duplicate bug elimination savings.</p>
-          </div>
-
-          <div class="slider">
-            <label class="slider-row" for="input-team-size">
-              <span data-i18n="slider_team_title">Engineering Team Size:</span>
-              <output class="slider-val" id="val-team-size">20 devs</output>
-            </label>
-            <input type="range" min="5" max="150" value="20" step="5" class="custom-range" id="input-team-size">
-          </div>
-
-          <div class="slider">
-            <label class="slider-row" for="input-bugs-month">
-              <span data-i18n="slider_bugs_title">Critical Bug Fixes / Month:</span>
-              <output class="slider-val" id="val-bugs-month">8 fixes</output>
-            </label>
-            <input type="range" min="1" max="25" value="8" step="1" class="custom-range" id="input-bugs-month">
-          </div>
-
-          <div class="slider">
-            <label class="slider-row" for="input-dev-rate">
-              <span data-i18n="slider_rate_title">Blended Dev Rate ($ USD / hr):</span>
-              <output class="slider-val" id="val-dev-rate">$85 / hr</output>
-            </label>
-            <input type="range" min="40" max="160" value="85" step="5" class="custom-range" id="input-dev-rate">
-          </div>
-        </div>
-
-        <div class="calc-out">
-          <div class="readout readout-hero">
-            <div class="readout-label" data-i18n="calc_out_money_label">Annual Engineering Cost Saved</div>
-            <div class="readout-num" id="out-money-saved">$48,960</div>
-            <div class="readout-desc" data-i18n="calc_out_money_desc">Based on eliminating duplicate diagnosis and repeated emergency fixes.</div>
-          </div>
-          <div class="readout">
-            <div class="readout-label" data-i18n="calc_out_hours_label">Duplicate Triage Hours Saved</div>
-            <div class="readout-num" id="out-hours-saved">576 hrs</div>
-            <div class="readout-desc" data-i18n="calc_out_hours_desc">Developer hours reclaimed from manual grep and postmortem re-investigation.</div>
-          </div>
-          <div class="readout">
-            <div class="readout-label" data-i18n="calc_out_regressions_label">Silent Twin Bugs Neutralized</div>
-            <div class="readout-num readout-violet" id="out-regressions-stopped">24 bugs</div>
-            <div class="readout-desc" data-i18n="calc_out_regressions_desc">Identical semantic errors killed before ever reaching production.</div>
-          </div>
-          <div class="readout">
-            <div class="readout-label" data-i18n="calc_out_token_label">Bob Subagent Efficiency</div>
-            <div class="readout-num readout-sm">100% Deterministic</div>
-            <div class="readout-desc" data-i18n="calc_out_token_desc">Zero tokens burned re-running hallucinated advice. Proof recorded by CLI.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="table-wrap">
-        <table class="bench">
-          <thead>
-            <tr>
-              <th scope="col" data-i18n="roi_col1">Metric / Capability</th>
-              <th scope="col" data-i18n="roi_col2">Manual Engineering</th>
-              <th scope="col" data-i18n="roi_col3">Antibody with IBM Bob</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row" data-i18n="roi_row1">Time to Hunt Repository Twins</th>
-              <td data-i18n="roi_row1_val1">90 minutes (ad-hoc grep)</td>
-              <td data-i18n="roi_row1_val2">10 minutes (automated)</td>
-            </tr>
-            <tr>
-              <th scope="row" data-i18n="roi_row2">Twin Verification Rigor</th>
-              <td data-i18n="roi_row2_val1">Subjective human inspection</td>
-              <td data-i18n="roi_row2_val2">100% Failing Pytest Proof</td>
-            </tr>
-            <tr>
-              <th scope="row" data-i18n="roi_row3">Adversarial Stress Testing</th>
-              <td data-i18n="roi_row3_val1">None (defenses stay brittle)</td>
-              <td data-i18n="roi_row3_val2">Multi-round Red-Team Mutation</td>
-            </tr>
-            <tr>
-              <th scope="row" data-i18n="roi_row4">Final Immunity Score</th>
-              <td data-i18n="roi_row4_val1">17% (baseline only)</td>
-              <td data-i18n="roi_row4_val2">100% (proven in worktree)</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ SANDBOX ============ -->
   <section id="sandbox" class="sec sec-sandbox">
     <div class="wrap">
@@ -929,8 +826,6 @@ Consider refactoring billing/reports/monthly.py."</span>
         <li class="member">
           <span class="member-cell" aria-hidden="true">RM</span>
           <h3>Román Molina</h3>
-          <p class="member-role" data-i18n="team_role_roman">Full-Stack &amp; Systems Architecture</p>
-          <p class="member-desc" data-i18n="team_desc_roman">Core architecture, deterministic evidence engine, and interactive laboratory interface.</p>
           <a href="https://www.linkedin.com/in/romanmolina/" target="_blank" rel="noopener noreferrer" class="member-link">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg><span data-i18n="team_connect">LinkedIn Profile ↗</span>
           </a>
@@ -938,17 +833,13 @@ Consider refactoring billing/reports/monthly.py."</span>
         <li class="member">
           <span class="member-cell" aria-hidden="true">JY</span>
           <h3>Joaquín Yapura</h3>
-          <p class="member-role" data-i18n="team_role_joaquin">Autonomous Agents &amp; Logic</p>
-          <p class="member-desc" data-i18n="team_desc_joaquin">IBM Bob 2.0 subagent orchestration, adversarial red-team mutations, and twin hunter pipelines.</p>
           <a href="https://www.linkedin.com/in/joaqu%C3%ADn-yapura-89a098412?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="member-link">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg><span data-i18n="team_connect">LinkedIn Profile ↗</span>
           </a>
         </li>
         <li class="member">
           <span class="member-cell" aria-hidden="true">BW</span>
-          <h3>Benjamín Ligonier-Wertmiller</h3>
-          <p class="member-role" data-i18n="team_role_benjamin">Systems &amp; Verification</p>
-          <p class="member-desc" data-i18n="team_desc_benjamin">Git worktree sandbox isolation, AST parsing dissector, and deterministic pytest verification.</p>
+          <h3>Benjamín Ligonie Wertmiller</h3>
           <a href="https://www.linkedin.com/in/benjamin-ligonie-wertmiller-805333257?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="member-link">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg><span data-i18n="team_connect">LinkedIn Profile ↗</span>
           </a>
