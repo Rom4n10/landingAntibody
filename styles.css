@@ -110,12 +110,20 @@ html {
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
   font-variant-numeric: tabular-nums;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body.menu-locked {
+  overflow: hidden;
 }
 
 /* Typography Defaults */
@@ -574,11 +582,12 @@ code, pre, .font-mono {
   display: grid;
   grid-template-columns: 360px minmax(0, 1fr);
   min-height: 580px;
+  width: 100%;
 }
 
 @media (max-width: 960px) {
   .lab-main-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -590,6 +599,8 @@ code, pre, .font-mono {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .score-display {
@@ -874,6 +885,8 @@ code, pre, .font-mono {
   display: flex;
   flex-direction: column;
   background: var(--bg-panel);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .inspector-tabs-row {
@@ -1093,7 +1106,7 @@ code, pre, .font-mono {
 
 .problem-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
   margin-top: 48px;
 }
@@ -1383,12 +1396,14 @@ code, pre, .font-mono {
   background: var(--bg-panel);
   border: 1px solid var(--border-surgical);
   border-radius: var(--radius-lg);
-  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   box-shadow: var(--shadow-card);
 }
 
 .roi-table {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
   text-align: left;
 }
@@ -1433,7 +1448,7 @@ code, pre, .font-mono {
 
 .cli-steps-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
   margin-top: 48px;
 }
@@ -1552,23 +1567,7 @@ footer {
   color: var(--ink-primary);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-  .hero-actions {
-    flex-direction: column;
-    width: 100%;
-  }
-  .hero-actions .btn-primary, .hero-actions .btn-secondary {
-    width: 100%;
-    justify-content: center;
-  }
-  .trust-strip {
-    grid-template-columns: 1fr;
-  }
-}
+
 
 /* ==========================================================================
    FEATURE 1: LIVING REPO IMMUNE MAP
@@ -2155,4 +2154,809 @@ footer {
 @keyframes blink-cursor {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+/* ==========================================================================
+   FEATURE 5: TEAM & CREATORS SECTION
+   ========================================================================== */
+.team-section {
+  padding: 80px 0;
+  background: var(--bg-papiro);
+  border-bottom: 1px solid var(--border-surgical);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.team-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-surgical);
+  border-radius: var(--radius-xl);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform var(--transition-quick), box-shadow var(--transition-quick), border-color var(--transition-quick);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--stain-violet-border);
+  box-shadow: var(--shadow-elevated);
+}
+
+.team-avatar-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  background: var(--stain-violet-light);
+  border: 1px solid var(--stain-violet-border);
+  color: var(--stain-violet);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.team-role-dot {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--proof-green);
+  border: 2px solid var(--bg-panel);
+}
+
+.team-card-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.team-member-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-bottom: 4px;
+}
+
+.team-member-role {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--stain-violet);
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.team-member-desc {
+  font-size: 13.5px;
+  color: var(--ink-secondary);
+  line-height: 1.55;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.btn-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-panel-subtle);
+  border: 1px solid var(--border-surgical);
+  color: var(--ink-primary);
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  text-decoration: none;
+  transition: all var(--transition-quick);
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-linkedin svg {
+  color: #0A66C2;
+  transition: transform var(--transition-quick);
+}
+
+.btn-linkedin:hover {
+  background: #0A66C2;
+  color: #FFFFFF;
+  border-color: #0A66C2;
+  box-shadow: 0 2px 8px rgba(10, 102, 194, 0.25);
+}
+
+.btn-linkedin:hover svg {
+  color: #FFFFFF;
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
+   RESPONSIVE BASE & MOBILE NAVIGATION COMPONENTS
+   ========================================================================== */
+
+/* Safeguards against viewport overflow */
+img, svg, canvas {
+  max-width: 100%;
+}
+
+pre, code, .code-pre, .tree-view, .ast-tree-diagram, .terminal-body {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile Navigation Hamburger Button */
+.mobile-menu-toggle {
+  display: none;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-surgical);
+  background: var(--bg-panel);
+  color: var(--ink-primary);
+  cursor: pointer;
+  transition: all var(--transition-quick);
+  flex-shrink: 0;
+}
+
+.mobile-menu-toggle:hover {
+  background: var(--bg-surface);
+  border-color: var(--border-strong);
+}
+
+.hamburger-box {
+  width: 18px;
+  height: 14px;
+  position: relative;
+  display: inline-block;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  width: 18px;
+  height: 2px;
+  background-color: var(--ink-primary);
+  border-radius: 2px;
+  position: absolute;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.22s ease;
+}
+
+.hamburger-inner {
+  top: 6px;
+}
+
+.hamburger-inner::before {
+  content: "";
+  top: -6px;
+}
+
+.hamburger-inner::after {
+  content: "";
+  bottom: -6px;
+}
+
+/* Active hamburger animation (Transform into X) */
+.mobile-menu-toggle.is-active .hamburger-inner {
+  background-color: transparent;
+}
+
+.mobile-menu-toggle.is-active .hamburger-inner::before {
+  transform: translateY(6px) rotate(45deg);
+  background-color: var(--stain-violet);
+}
+
+.mobile-menu-toggle.is-active .hamburger-inner::after {
+  transform: translateY(-6px) rotate(-45deg);
+  background-color: var(--stain-violet);
+}
+
+/* Mobile Backdrop Overlay */
+.mobile-nav-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 29, 36, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 98;
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+[data-theme="dark"] .mobile-nav-backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.mobile-nav-backdrop.is-active {
+  display: block;
+  opacity: 1;
+}
+
+/* Mobile-only Nav List Items */
+.nav-mobile-only {
+  display: none;
+}
+
+/* Living Repo Map Scroll Container & Hint */
+.repo-canvas-scroll-wrap {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  background: var(--bg-panel);
+}
+
+.repo-scroll-hint {
+  display: none;
+  background: var(--bg-panel-subtle);
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 8px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-surgical);
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   BREAKPOINT: LAPTOPS & TABLETS (max-width: 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .phases-timeline-wrap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ==========================================================================
+   BREAKPOINT: TABLETS & MOBILE DRAWER (max-width: 900px)
+   ========================================================================== */
+@media (max-width: 900px) {
+  /* Show hamburger button */
+  .mobile-menu-toggle {
+    display: inline-flex;
+  }
+
+  /* Transform nav-links into animated mobile drawer */
+  .nav-links {
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: calc(100vh - 68px);
+    background: var(--bg-panel);
+    border-top: 1px solid var(--border-surgical);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px 24px;
+    gap: 10px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), opacity 240ms ease;
+    z-index: 99;
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .nav-links.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 18px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink-primary);
+    background: var(--bg-panel-subtle);
+    border: 1px solid var(--border-surgical);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-quick);
+  }
+
+  .nav-links a:hover,
+  .nav-links a:active {
+    background: var(--stain-violet-light);
+    color: var(--stain-violet);
+    border-color: var(--stain-violet-border);
+    transform: translateX(4px);
+  }
+
+  .nav-mobile-only {
+    display: block;
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-surgical);
+  }
+
+  .nav-mobile-github {
+    background: var(--ink-primary) !important;
+    color: var(--bg-panel) !important;
+    border-color: var(--ink-primary) !important;
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+
+  /* Two-column layouts become single-column */
+  .lab-main-grid {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+  }
+
+  .lab-plate-col {
+    border-right: none;
+    border-bottom: 1px solid var(--border-surgical);
+    padding: 24px 20px;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .lab-inspector-col {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .ast-dissector-grid {
+    grid-template-columns: 1fr;
+    padding: 18px;
+    gap: 18px;
+  }
+
+  .calc-grid-wrap {
+    grid-template-columns: 1fr;
+    padding: 28px 22px;
+    gap: 28px;
+  }
+
+  .gitops-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .comparison-split-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Living Repo Map Canvas becomes swipeable */
+  .repo-scroll-hint {
+    display: flex;
+  }
+
+  .repo-canvas-stage {
+    min-width: 960px;
+  }
+}
+
+/* ==========================================================================
+   BREAKPOINT: STANDARD TABLET & PHONE (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Section Spacing */
+  .hero {
+    padding: 48px 0 36px;
+  }
+
+  .lab-section,
+  .repo-map-section,
+  .problem-section,
+  .microscope-section,
+  .phases-section,
+  .proof-section,
+  .bob-section,
+  .gitops-section,
+  .roi-section,
+  .sandbox-section,
+  .quickstart-section,
+  .team-section {
+    padding: 56px 0;
+  }
+
+  /* Hero Content */
+  .hero-title {
+    font-size: clamp(28px, 6vw, 42px);
+    margin-bottom: 16px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+    line-height: 1.55;
+    margin-bottom: 28px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+  }
+
+  /* Trust Strip */
+  .trust-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  /* Lab Topbar & Controls */
+  .lab-topbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 14px 16px;
+  }
+
+  .specimen-select-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .specimen-select {
+    width: 100%;
+  }
+
+  .lab-phase-stepper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px;
+    gap: 6px;
+  }
+
+  .lab-phase-stepper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .phase-step {
+    flex-shrink: 0;
+    padding: 6px 11px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  /* Inspector Tabs Scrollable */
+  .inspector-tabs-row {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 8px;
+  }
+
+  .inspector-tabs-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+
+  .inspector-body {
+    padding: 18px 16px;
+  }
+
+  /* Repo Map Topbar */
+  .repo-map-topbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .map-controls-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .btn-map-action {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .node-inspector-drawer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 14px 16px;
+    font-size: 12px;
+  }
+
+  /* Sandbox Terminal Chips */
+  .sandbox-chips-row {
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+
+  .sandbox-chips-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .terminal-chip {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+
+  .terminal-body {
+    padding: 16px 14px;
+    font-size: 12px;
+    min-height: 300px;
+  }
+
+  /* Quickstart CLI Steps */
+  .cli-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  /* CTA Banner */
+  .cta-banner {
+    padding: 56px 0;
+  }
+
+  .cta-box {
+    padding: 40px 20px;
+  }
+
+  .cta-box h2 {
+    font-size: clamp(24px, 5vw, 34px);
+  }
+
+  .cta-box p {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+
+  .cta-box .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Footer */
+  footer {
+    padding: 36px 0;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 18px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+}
+
+/* ==========================================================================
+   BREAKPOINT: STANDARD MOBILE PHONES (max-width: 600px)
+   ========================================================================== */
+@media (max-width: 600px) {
+  /* Container Padding */
+  .container {
+    padding: 0 16px;
+  }
+
+  /* Header compacting */
+  .hackathon-pill {
+    display: none;
+  }
+
+  .nav-controls .nav-github-btn {
+    display: none;
+  }
+
+  /* Trust Strip 1 Column */
+  .trust-strip {
+    grid-template-columns: 1fr;
+  }
+
+  /* Single Column Phases */
+  .phases-timeline-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  /* Problem, Bob & Team Grids */
+  .problem-grid,
+  .bob-grid,
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .problem-card,
+  .bob-card,
+  .phase-card,
+  .comparison-box,
+  .team-card {
+    padding: 22px 18px;
+  }
+
+  /* Lab Simulator Elements */
+  .score-val {
+    font-size: clamp(40px, 12vw, 54px);
+  }
+
+  .round-selector-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: 100%;
+  }
+
+  .round-btn {
+    padding: 6px 4px;
+    font-size: 10.5px;
+    white-space: normal;
+    line-height: 1.25;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sim-controls-bar {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .twin-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 14px;
+  }
+
+  .twin-card-info {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .code-pre {
+    padding: 12px;
+    font-size: 12px;
+  }
+
+  /* Microscope */
+  .microscope-view-selector {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .lens-mode-btn {
+    padding: 8px 12px;
+    font-size: 11.5px;
+  }
+
+  .ast-tree-diagram {
+    padding: 12px;
+    font-size: 11.5px;
+    line-height: 1.6;
+  }
+
+  /* ROI Calculator Outputs */
+  .calc-outputs-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .calc-stat-box {
+    padding: 16px;
+  }
+
+  .stat-box-number {
+    font-size: 32px;
+  }
+
+  /* ROI Table Wrap */
+  .roi-table-wrap {
+    margin-top: 24px;
+  }
+
+  .roi-table th,
+  .roi-table td {
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+}
+
+/* ==========================================================================
+   BREAKPOINT: NARROW MOBILE SCREENS (max-width: 380px)
+   ========================================================================== */
+@media (max-width: 380px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .brand-logo {
+    font-size: 17px;
+  }
+
+  .brand-dna {
+    font-size: 19px;
+  }
+
+  .btn-control {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .hero-title {
+    font-size: 24px;
+  }
+
+  .well-grid {
+    gap: 8px;
+  }
+
+  .well-circle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .score-val {
+    font-size: 38px;
+  }
 }

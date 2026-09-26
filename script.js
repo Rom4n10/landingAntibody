@@ -447,6 +447,7 @@ const I18N = {
     map_status_quarantine: "Network State: Vulnerable (3 Unprotected Twins)",
     btn_trigger_infection: "Trigger Infection Pulse",
     btn_deploy_immunity: "Deploy Bob Subagents",
+    repomap_scroll_hint: "Swipe horizontally to explore full repository map",
     microscope_tag: "Deep Compiler Inspection",
     microscope_title: "Mutation Microscope: AST Dissector",
     microscope_desc: "Compare how standard text grep sees code vs. how IBM Bob's Abstract Syntax Tree (AST) engine uncovers fatal runtime type mismatches.",
@@ -467,7 +468,18 @@ const I18N = {
     calc_out_token_desc: "Zero tokens burned re-running hallucinated advice. Proof recorded by CLI.",
     sandbox_tag: "Live Interactive Terminal",
     sandbox_title: "Try Antibody CLI & Bob Mode Live",
-    sandbox_desc: "Click any command chip below to execute realistic workflows with authentic CLI spinners, isolated worktrees, and pytest verdicts."
+    sandbox_desc: "Click any command chip below to execute realistic workflows with authentic CLI spinners, isolated worktrees, and pytest verdicts.",
+    nav_team: "Team",
+    team_tag: "The Creators",
+    team_title: "Meet the Team Behind Antibody",
+    team_desc: "Engineered with precision for the IBM Bob 2.0 Hackathon (September 2026, lablab.ai).",
+    team_connect: "LinkedIn Profile ↗",
+    team_role_roman: "Full-Stack & Systems Architecture",
+    team_desc_roman: "Core architecture, deterministic evidence engine, and interactive laboratory interface.",
+    team_role_joaquin: "Autonomous Agents & Logic",
+    team_desc_joaquin: "IBM Bob 2.0 subagent orchestration, adversarial red-team mutations, and twin hunter pipelines.",
+    team_role_benjamin: "Systems & Verification",
+    team_desc_benjamin: "Git worktree sandbox isolation, AST parsing dissector, and deterministic pytest verification."
   },
   es: {
     nav_problem: "El Problema",
@@ -599,6 +611,7 @@ const I18N = {
     map_status_quarantine: "Estado de Red: Vulnerable (3 Gemelos Expuestos)",
     btn_trigger_infection: "Pulsar Ola de Infección",
     btn_deploy_immunity: "Desplegar Subagentes de Bob",
+    repomap_scroll_hint: "Desliza horizontalmente para explorar el mapa del repositorio",
     microscope_tag: "Inspección Profunda de Compilador",
     microscope_title: "Microscopio de Mutaciones: Disector AST",
     microscope_desc: "Compara cómo un grep de texto plano ve el código frente al motor de árbol sintáctico (AST) de Bob que revela incompatibilidades de tipos fatales.",
@@ -619,7 +632,18 @@ const I18N = {
     calc_out_token_desc: "Cero tokens desperdiciados en consejos alucinados. Evidencia registrada por CLI.",
     sandbox_tag: "Terminal Interactiva en Vivo",
     sandbox_title: "Probá Antibody CLI y Modo Bob en Vivo",
-    sandbox_desc: "Hacé clic en cualquier comando abajo para ver flujos reales con spinners, worktrees aislados y veredictos de pytest."
+    sandbox_desc: "Hacé clic en cualquier comando abajo para ver flujos reales con spinners, worktrees aislados y veredictos de pytest.",
+    nav_team: "Equipo",
+    team_tag: "Los Creadores",
+    team_title: "Conoce al Equipo Detrás de Antibody",
+    team_desc: "Diseñado con precisión para la Hackathon IBM Bob 2.0 (Septiembre 2026, lablab.ai).",
+    team_connect: "Perfil de LinkedIn ↗",
+    team_role_roman: "Full-Stack y Arquitectura de Sistemas",
+    team_desc_roman: "Arquitectura central, motor de evidencia determinista e interfaz interactiva del laboratorio.",
+    team_role_joaquin: "Agentes Autónomos y Lógica",
+    team_desc_joaquin: "Orquestación de subagentes de IBM Bob 2.0, mutaciones de equipo rojo y pipelines de gemelos.",
+    team_role_benjamin: "Sistemas y Verificación",
+    team_desc_benjamin: "Aislamiento en sandbox de git worktree, disector AST y verificación determinista en pytest."
   }
 };
 
@@ -662,7 +686,8 @@ document.addEventListener("DOMContentLoaded", () => {
   renderPhase(1);
   renderInspectorTab("diagnosis");
 
-  // Initialize the 4 WOW Features
+  // Initialize Responsive Navigation & Features
+  initMobileMenu();
   initRepoMap();
   initMicroscope();
   initRoiCalculator();
@@ -1418,3 +1443,54 @@ function initSandboxTerminal() {
     });
   });
 }
+
+// ==========================================================================
+// RESPONSIVE MOBILE NAVIGATION DRAWER
+// ==========================================================================
+function initMobileMenu() {
+  const toggleBtn = document.getElementById("mobile-menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+  const backdrop = document.getElementById("mobile-nav-backdrop");
+
+  if (!toggleBtn || !navLinks) return;
+
+  function toggleMenu(forceState) {
+    const isOpening = forceState !== undefined ? forceState : !navLinks.classList.contains("is-open");
+    navLinks.classList.toggle("is-open", isOpening);
+    toggleBtn.classList.toggle("is-active", isOpening);
+    toggleBtn.setAttribute("aria-expanded", isOpening ? "true" : "false");
+    if (backdrop) backdrop.classList.toggle("is-active", isOpening);
+    document.body.classList.toggle("menu-locked", isOpening);
+  }
+
+  toggleBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  if (backdrop) {
+    backdrop.addEventListener("click", () => toggleMenu(false));
+  }
+
+  // Close when clicking any navigation link
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      toggleMenu(false);
+    });
+  });
+
+  // Close on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && navLinks.classList.contains("is-open")) {
+      toggleMenu(false);
+    }
+  });
+
+  // Automatically close menu if viewport expands above 900px
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 900 && navLinks.classList.contains("is-open")) {
+      toggleMenu(false);
+    }
+  });
+}
+

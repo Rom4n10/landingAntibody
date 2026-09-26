@@ -33,6 +33,13 @@
           <li><a href="#proof" data-i18n="nav_proof">Proof vs Opinion</a></li>
           <li><a href="#roi-calc" data-i18n="nav_roi">ROI Calculator</a></li>
           <li><a href="#sandbox" data-i18n="nav_sandbox">Live Terminal</a></li>
+          <li><a href="#team" data-i18n="nav_team">Team</a></li>
+          <li class="nav-mobile-only">
+            <a href="https://github.com/Rom4n10/ibmHackathon" target="_blank" class="nav-mobile-github">
+              <span>GitHub Repository</span>
+              <span>↗</span>
+            </a>
+          </li>
         </ul>
       </nav>
 
@@ -44,13 +51,19 @@
         <button id="theme-toggle-btn" class="btn-control" aria-label="Switch theme">
           <span class="theme-icon">☀️</span>
         </button>
-        <a href="https://github.com/Rom4n10/ibmHackathon" target="_blank" class="btn-primary" style="padding: 8px 14px; font-size: 13px;">
+        <a href="https://github.com/Rom4n10/ibmHackathon" target="_blank" class="btn-primary nav-github-btn" style="padding: 8px 14px; font-size: 13px;">
           <span>GitHub</span>
           <span>↗</span>
         </a>
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
       </div>
     </div>
   </header>
+  <div id="mobile-nav-backdrop" class="mobile-nav-backdrop"></div>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -295,78 +308,83 @@
           </div>
         </div>
 
-        <div class="repo-canvas-stage" id="repo-canvas-stage">
-          <div class="repo-canvas-grid"></div>
-
-          <!-- SVG Edges connecting nodes -->
-          <svg class="repo-svg-overlay" id="repo-svg-overlay">
-            <line id="edge-origin-sub" class="repo-svg-edge" x1="160" y1="240" x2="420" y2="120" />
-            <line id="edge-origin-rem" class="repo-svg-edge" x1="160" y1="240" x2="420" y2="240" />
-            <line id="edge-origin-web" class="repo-svg-edge" x1="160" y1="240" x2="420" y2="360" />
-            <line id="edge-origin-rep" class="repo-svg-edge" x1="160" y1="240" x2="680" y2="150" />
-            <line id="edge-sub-shield" class="repo-svg-edge" x1="420" y1="120" x2="880" y2="240" />
-            <line id="edge-rem-shield" class="repo-svg-edge" x1="420" y1="240" x2="880" y2="240" />
-            <line id="edge-web-shield" class="repo-svg-edge" x1="420" y1="360" x2="880" y2="240" />
-            <line id="edge-rep-shield" class="repo-svg-edge" x1="680" y1="150" x2="880" y2="240" />
-          </svg>
-
-          <!-- Node: Origin Bug -->
-          <div class="repo-node origin" style="left: 160px; top: 240px;" data-node-id="origin">
-            <div class="node-icon-box">🐛</div>
-            <div class="node-text-wrap">
-              <div class="node-filename">invoices.py:88</div>
-              <div class="node-role-tag">Fix Origin (#412)</div>
-            </div>
+        <div class="repo-canvas-scroll-wrap">
+          <div class="repo-scroll-hint">
+            <span>⇄</span> <span data-i18n="repomap_scroll_hint">Swipe horizontally to explore full repository map</span>
           </div>
+          <div class="repo-canvas-stage" id="repo-canvas-stage">
+            <div class="repo-canvas-grid"></div>
 
-          <!-- Node: Twin 1 -->
-          <div class="repo-node infected" style="left: 420px; top: 120px;" data-node-id="sub">
-            <div class="node-icon-box">📄</div>
-            <div class="node-text-wrap">
-              <div class="node-filename">subscriptions.py</div>
-              <div class="node-role-tag">Twin c01: renews_at</div>
-            </div>
-            <span class="node-badge-shield" id="shield-sub" style="display:none;">✓</span>
-          </div>
+            <!-- SVG Edges connecting nodes -->
+            <svg class="repo-svg-overlay" id="repo-svg-overlay">
+              <line id="edge-origin-sub" class="repo-svg-edge" x1="160" y1="240" x2="420" y2="120" />
+              <line id="edge-origin-rem" class="repo-svg-edge" x1="160" y1="240" x2="420" y2="240" />
+              <line id="edge-origin-web" class="repo-svg-edge" x1="160" y1="240" x2="420" y2="360" />
+              <line id="edge-origin-rep" class="repo-svg-edge" x1="160" y1="240" x2="680" y2="150" />
+              <line id="edge-sub-shield" class="repo-svg-edge" x1="420" y1="120" x2="880" y2="240" />
+              <line id="edge-rem-shield" class="repo-svg-edge" x1="420" y1="240" x2="880" y2="240" />
+              <line id="edge-web-shield" class="repo-svg-edge" x1="420" y1="360" x2="880" y2="240" />
+              <line id="edge-rep-shield" class="repo-svg-edge" x1="680" y1="150" x2="880" y2="240" />
+            </svg>
 
-          <!-- Node: Twin 2 -->
-          <div class="repo-node infected" style="left: 420px; top: 240px;" data-node-id="rem">
-            <div class="node-icon-box">⏰</div>
-            <div class="node-text-wrap">
-              <div class="node-filename">reminders.py</div>
-              <div class="node-role-tag">Twin c02: due_at diff</div>
+            <!-- Node: Origin Bug -->
+            <div class="repo-node origin" style="left: 160px; top: 240px;" data-node-id="origin">
+              <div class="node-icon-box">🐛</div>
+              <div class="node-text-wrap">
+                <div class="node-filename">invoices.py:88</div>
+                <div class="node-role-tag">Fix Origin (#412)</div>
+              </div>
             </div>
-            <span class="node-badge-shield" id="shield-rem" style="display:none;">✓</span>
-          </div>
 
-          <!-- Node: Twin 3 -->
-          <div class="repo-node infected" style="left: 420px; top: 360px;" data-node-id="web">
-            <div class="node-icon-box">🔌</div>
-            <div class="node-text-wrap">
-              <div class="node-filename">webhooks.py</div>
-              <div class="node-role-tag">Twin c03: received_at</div>
+            <!-- Node: Twin 1 -->
+            <div class="repo-node infected" style="left: 420px; top: 120px;" data-node-id="sub">
+              <div class="node-icon-box">📄</div>
+              <div class="node-text-wrap">
+                <div class="node-filename">subscriptions.py</div>
+                <div class="node-role-tag">Twin c01: renews_at</div>
+              </div>
+              <span class="node-badge-shield" id="shield-sub" style="display:none;">✓</span>
             </div>
-            <span class="node-badge-shield" id="shield-web" style="display:none;">✓</span>
-          </div>
 
-          <!-- Node: Suspected / Celery -->
-          <div class="repo-node" style="left: 680px; top: 150px;" data-node-id="rep">
-            <div class="node-icon-box">⚙️</div>
-            <div class="node-text-wrap">
-              <div class="node-filename">monthly.py</div>
-              <div class="node-role-tag">c04: Celery Worker</div>
+            <!-- Node: Twin 2 -->
+            <div class="repo-node infected" style="left: 420px; top: 240px;" data-node-id="rem">
+              <div class="node-icon-box">⏰</div>
+              <div class="node-text-wrap">
+                <div class="node-filename">reminders.py</div>
+                <div class="node-role-tag">Twin c02: due_at diff</div>
+              </div>
+              <span class="node-badge-shield" id="shield-rem" style="display:none;">✓</span>
             </div>
-            <span class="node-badge-shield" id="shield-rep" style="display:none; background: var(--escape-amber);">?</span>
-          </div>
 
-          <!-- Node: Defense / Semgrep Core -->
-          <div class="repo-node immunized" style="left: 880px; top: 240px;" data-node-id="shield">
-            <div class="node-icon-box">🛡️</div>
-            <div class="node-text-wrap">
-              <div class="node-filename">rule.yml</div>
-              <div class="node-role-tag">.antibody/ Permanent Shield</div>
+            <!-- Node: Twin 3 -->
+            <div class="repo-node infected" style="left: 420px; top: 360px;" data-node-id="web">
+              <div class="node-icon-box">🔌</div>
+              <div class="node-text-wrap">
+                <div class="node-filename">webhooks.py</div>
+                <div class="node-role-tag">Twin c03: received_at</div>
+              </div>
+              <span class="node-badge-shield" id="shield-web" style="display:none;">✓</span>
             </div>
-            <span class="node-badge-shield">100%</span>
+
+            <!-- Node: Suspected / Celery -->
+            <div class="repo-node" style="left: 680px; top: 150px;" data-node-id="rep">
+              <div class="node-icon-box">⚙️</div>
+              <div class="node-text-wrap">
+                <div class="node-filename">monthly.py</div>
+                <div class="node-role-tag">c04: Celery Worker</div>
+              </div>
+              <span class="node-badge-shield" id="shield-rep" style="display:none; background: var(--escape-amber);">?</span>
+            </div>
+
+            <!-- Node: Defense / Semgrep Core -->
+            <div class="repo-node immunized" style="left: 880px; top: 240px;" data-node-id="shield">
+              <div class="node-icon-box">🛡️</div>
+              <div class="node-text-wrap">
+                <div class="node-filename">rule.yml</div>
+                <div class="node-role-tag">.antibody/ Permanent Shield</div>
+              </div>
+              <span class="node-badge-shield">100%</span>
+            </div>
           </div>
         </div>
 
@@ -916,6 +934,78 @@ Consider refactoring billing/reports/monthly.py."</span>
     </div>
   </section>
 
+  <!-- Team & Creators Section -->
+  <section id="team" class="team-section">
+    <div class="container">
+      <div class="section-badge-header">
+        <span class="badge-tag" data-i18n="team_tag">The Creators</span>
+        <h2 data-i18n="team_title">Meet the Team Behind Antibody</h2>
+        <p data-i18n="team_desc">
+          Engineered with precision for the IBM Bob 2.0 Hackathon (September 2026, lablab.ai).
+        </p>
+      </div>
+
+      <div class="team-grid">
+        <!-- Member 1: Román Molina -->
+        <div class="team-card">
+          <div class="team-avatar-box">
+            <span class="team-avatar-initials">RM</span>
+            <span class="team-role-dot" title="Core Contributor"></span>
+          </div>
+          <div class="team-card-info">
+            <h3 class="team-member-name">Román Molina</h3>
+            <span class="team-member-role" data-i18n="team_role_roman">Full-Stack & Systems Architecture</span>
+            <p class="team-member-desc" data-i18n="team_desc_roman">
+              Core architecture, deterministic evidence engine, and interactive laboratory interface.
+            </p>
+            <a href="https://www.linkedin.com/in/romanmolina/" target="_blank" rel="noopener noreferrer" class="btn-linkedin">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span data-i18n="team_connect">LinkedIn Profile ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 2: Joaquín Yapura -->
+        <div class="team-card">
+          <div class="team-avatar-box">
+            <span class="team-avatar-initials">JY</span>
+            <span class="team-role-dot" title="Core Contributor"></span>
+          </div>
+          <div class="team-card-info">
+            <h3 class="team-member-name">Joaquín Yapura</h3>
+            <span class="team-member-role" data-i18n="team_role_joaquin">Autonomous Agents & Logic</span>
+            <p class="team-member-desc" data-i18n="team_desc_joaquin">
+              IBM Bob 2.0 subagent orchestration, adversarial red-team mutations, and twin hunter pipelines.
+            </p>
+            <a href="https://www.linkedin.com/in/joaqu%C3%ADn-yapura-89a098412?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="btn-linkedin">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span data-i18n="team_connect">LinkedIn Profile ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Member 3: Benjamín Ligonier-Wertmiller -->
+        <div class="team-card">
+          <div class="team-avatar-box">
+            <span class="team-avatar-initials">BW</span>
+            <span class="team-role-dot" title="Core Contributor"></span>
+          </div>
+          <div class="team-card-info">
+            <h3 class="team-member-name">Benjamín Ligonier-Wertmiller</h3>
+            <span class="team-member-role" data-i18n="team_role_benjamin">Systems & Verification</span>
+            <p class="team-member-desc" data-i18n="team_desc_benjamin">
+              Git worktree sandbox isolation, AST parsing dissector, and deterministic pytest verification.
+            </p>
+            <a href="https://www.linkedin.com/in/benjamin-ligonie-wertmiller-805333257?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="btn-linkedin">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span data-i18n="team_connect">LinkedIn Profile ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Final Call to Action -->
   <section class="cta-banner">
     <div class="container">
@@ -942,6 +1032,7 @@ Consider refactoring billing/reports/monthly.py."</span>
         <li><a href="https://github.com/Rom4n10/ibmHackathon" target="_blank">Repository</a></li>
         <li><a href="#lab">Live Simulator</a></li>
         <li><a href="#proof">Proof vs Opinion</a></li>
+        <li><a href="#team" data-i18n="nav_team">Team</a></li>
         <li><span data-i18n="footer_mit">MIT License</span></li>
       </ul>
     </div>
