@@ -411,6 +411,18 @@ const I18N = {
     adv_r1: "Round 1",
     adv_r2: "Round 2",
     adv_result: "The result: a defense that wasn't validated by human opinions, but forged under fire against real adversarial mutations.",
+    repomap_scroll_hint: "Swipe horizontally to explore full repository map",
+    nav_team: "Team",
+    team_tag: "The Creators",
+    team_title: "Meet the Team Behind Antibody",
+    team_desc: "Engineered with precision for the IBM Bob 2.0 Hackathon (September 2026, lablab.ai).",
+    team_connect: "LinkedIn Profile ↗",
+    team_role_roman: "Full-Stack & Systems Architecture",
+    team_desc_roman: "Core architecture, deterministic evidence engine, and interactive laboratory interface.",
+    team_role_joaquin: "Autonomous Agents & Logic",
+    team_desc_joaquin: "IBM Bob 2.0 subagent orchestration, adversarial red-team mutations, and twin hunter pipelines.",
+    team_role_benjamin: "Systems & Verification",
+    team_desc_benjamin: "Git worktree sandbox isolation, AST parsing dissector, and deterministic pytest verification.",
     proof_tag: "Anti-Hallucination Philosophy",
     proof_title: "Proof Over Opinion",
     proof_sub: "Antibody refuses to make claims it cannot demonstrate with real compiler or pytest execution.",
@@ -588,6 +600,18 @@ const I18N = {
     adv_r1: "Ronda 1",
     adv_r2: "Ronda 2",
     adv_result: "El resultado: una defensa que no fue probada por opiniones humanas, sino forjada bajo fuego contra mutaciones adversariales reales.",
+    repomap_scroll_hint: "Desliza horizontalmente para explorar el mapa del repositorio",
+    nav_team: "Equipo",
+    team_tag: "Los Creadores",
+    team_title: "Conoce al Equipo Detrás de Antibody",
+    team_desc: "Diseñado con precisión para la Hackathon IBM Bob 2.0 (Septiembre 2026, lablab.ai).",
+    team_connect: "Perfil de LinkedIn ↗",
+    team_role_roman: "Full-Stack y Arquitectura de Sistemas",
+    team_desc_roman: "Arquitectura central, motor de evidencia determinista e interfaz interactiva del laboratorio.",
+    team_role_joaquin: "Agentes Autónomos y Lógica",
+    team_desc_joaquin: "Orquestación de subagentes de IBM Bob 2.0, mutaciones de equipo rojo y pipelines de gemelos.",
+    team_role_benjamin: "Sistemas y Verificación",
+    team_desc_benjamin: "Aislamiento en sandbox de git worktree, disector AST y verificación determinista en pytest.",
     proof_tag: "Filosofía Anti-Alucinación",
     proof_title: "Prueba por Encima de Opinión",
     proof_sub: "Antibody se niega a emitir diagnósticos que no pueda demostrar con la ejecución real de un compilador o suite de tests.",
@@ -721,6 +745,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeroLens();
   initSectionReveal();
   initMagnetic();
+  initNavMenu();
 });
 
 function setupEventListeners() {
@@ -1595,4 +1620,14 @@ function initMagnetic() {
     });
     el.addEventListener("pointerleave", () => { el.style.transform = ""; });
   });
+}
+
+// Section menu (<details>): close after choosing a link, on Escape, or on outside click.
+function initNavMenu() {
+  const menu = document.querySelector(".nav-menu");
+  if (!menu) return;
+  const close = () => { menu.open = false; };
+  menu.querySelectorAll("a").forEach(a => a.addEventListener("click", close));
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && menu.open) close(); });
+  document.addEventListener("click", e => { if (menu.open && !menu.contains(e.target)) close(); });
 }
